@@ -22,10 +22,10 @@
         <i data-lucide="keyboard" aria-hidden="true"></i><span>Keyboard Navigation</span>
       </button>
       <nav class="audience-links" aria-label="Audience links">
-        <a href="#" aria-label="Students portal">Students</a>
-        <a href="#" aria-label="Faculty and staff portal">Faculty &amp; Staff</a>
-        <a href="#" aria-label="Alumni portal">Alumni</a>
-        <a href="#" aria-label="Parents information">Parents</a>
+        <a href="pages/students.html" aria-label="Students portal">Students</a>
+        <a href="pages/faculty-staff.html" aria-label="Faculty and staff portal">Faculty &amp; Staff</a>
+        <a href="pages/about.html#reports-disclosures" aria-label="Alumni information">Alumni</a>
+        <a href="pages/admissions.html#prospectus-faqs" aria-label="Parents information">Parents</a>
       </nav>
       <label class="language-select">
         <span class="sr-only">Select language</span>
@@ -41,10 +41,10 @@
   <section class="utility-header" aria-label="University identity and search">
     <div class="container utility-grid">
       <a class="brand" href="index.html" aria-label="Central University of South Bihar home">
-        <span class="brand-seal" aria-hidden="true">CUSB</span>
+        <img class="brand-logo" src="assets/images/culog.png" alt="Central University of South Bihar emblem" width="86" height="86">
         <span>
           <strong>Central University<br>of South Bihar</strong>
-          <small>ज्ञानो सेवा विमुक्तये</small>
+          <small>ज्ञान सेवा विमुक्तये</small>
         </span>
       </a>
       <form class="site-search" role="search" aria-label="Site search">
@@ -54,8 +54,8 @@
         <button type="submit" aria-label="Submit search">Search <i data-lucide="search" aria-hidden="true"></i></button>
       </form>
       <div class="header-actions">
-        <a class="quiet-link" href="#" aria-label="View notices"><i data-lucide="calendar-days" aria-hidden="true"></i>Notices</a>
-        <a class="btn primary" href="pages/admissions.html" aria-label="Apply now for admission">Apply Now <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+        <a class="quiet-link" href="pages/downloads-documents.html#notices" aria-label="View notices"><i data-lucide="calendar-days" aria-hidden="true"></i>Notices</a>
+        <a class="btn primary" href="pages/admissions.html#application-process" aria-label="Apply now for admission">Apply Now <i data-lucide="arrow-right" aria-hidden="true"></i></a>
         <button class="menu-toggle" type="button" aria-label="Open main navigation" aria-expanded="false" aria-controls="primary-navigation">
           <i data-lucide="menu" aria-hidden="true"></i>
         </button>
@@ -68,13 +68,127 @@
       <button class="nav-close" type="button" data-menu-close aria-label="Close main navigation">
         <i data-lucide="x" aria-hidden="true"></i>
       </button>
-      <a href="pages/about.html">About Us <i data-lucide="chevron-down" aria-hidden="true"></i></a>
-      <a href="pages/academics.html">Academics <i data-lucide="chevron-down" aria-hidden="true"></i></a>
-      <a href="pages/admissions.html">Admissions <i data-lucide="chevron-down" aria-hidden="true"></i></a>
-      <a href="#">Research <i data-lucide="chevron-down" aria-hidden="true"></i></a>
-      <a href="#">Campus Life <i data-lucide="chevron-down" aria-hidden="true"></i></a>
-      <a href="#">Leadership <i data-lucide="chevron-down" aria-hidden="true"></i></a>
-      <a href="#">Contact Us <i data-lucide="chevron-down" aria-hidden="true"></i></a>
+      <ul class="nav-list" role="list">
+        <li class="nav-item">
+          <button class="nav-trigger" type="button" aria-expanded="false">Home <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <div class="dropdown-menu">
+            <a href="index.html#news-title">Highlights</a>
+            <a href="index.html#quick-actions">Quick Actions</a>
+            <a href="index.html#programs-title">Featured Sections</a>
+            <a href="index.html#why-title">Explore CUSB</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <button class="nav-trigger" type="button" aria-expanded="false">About <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <div class="dropdown-menu">
+            <a href="pages/about.html#overview">Overview</a>
+            <a href="pages/about.html#vision-mission">Vision &amp; Mission</a>
+            <a href="pages/about.html#leadership">Leadership</a>
+            <a href="pages/about.html#governance">Governance</a>
+            <a href="pages/about.html#reports-disclosures">Reports &amp; Disclosures</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <button class="nav-trigger" type="button" aria-expanded="false">Academics <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <div class="dropdown-menu">
+            <a href="pages/academics.html#academic-structure">Academic Structure</a>
+            <a href="pages/academics.html#programs">Programs</a>
+            <a href="pages/academics.html#academic-resources">Academic Resources</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <button class="nav-trigger" type="button" aria-expanded="false">Admissions <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <div class="dropdown-menu">
+            <a href="pages/admissions.html#admission-overview">Admission Overview</a>
+            <a href="pages/admissions.html#programs-eligibility">Programs &amp; Eligibility</a>
+            <a href="pages/admissions.html#application-process">Application Process</a>
+            <a href="pages/admissions.html#entrance-exams">Entrance Exams</a>
+            <a href="pages/admissions.html#important-dates">Important Dates</a>
+            <a href="pages/admissions.html#fee-structure">Fee Structure</a>
+            <a href="pages/admissions.html#prospectus-faqs">Prospectus &amp; FAQs</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <button class="nav-trigger" type="button" aria-expanded="false">Research &amp; Innovation <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <div class="dropdown-menu">
+            <a href="pages/research-innovation.html#research-areas">Research Areas</a>
+            <a href="pages/research-innovation.html#projects-publications">Projects &amp; Publications</a>
+            <a href="pages/research-innovation.html#research-centers">Research Centers</a>
+            <a href="pages/research-innovation.html#collaborations">Collaborations &amp; MoUs</a>
+            <a href="pages/research-innovation.html#innovation-incubation">Innovation &amp; Incubation</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <button class="nav-trigger" type="button" aria-expanded="false">Students <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <div class="dropdown-menu">
+            <a href="pages/students.html#academic-support">Academic Support</a>
+            <a href="pages/students.html#student-services">Student Services</a>
+            <a href="pages/students.html#student-life">Student Life</a>
+            <a href="pages/students.html#support-compliance">Support &amp; Compliance</a>
+            <a href="pages/students.html#career-placement">Career &amp; Placement</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <button class="nav-trigger" type="button" aria-expanded="false">Faculty &amp; Staff <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <div class="dropdown-menu">
+            <a href="pages/faculty-staff.html#faculty-directory">Faculty Directory</a>
+            <a href="pages/faculty-staff.html#staff-directory">Staff Directory</a>
+            <a href="pages/faculty-staff.html#recruitment-careers">Recruitment &amp; Careers</a>
+            <a href="pages/faculty-staff.html#internal-portals">Internal Portals</a>
+            <a href="pages/faculty-staff.html#hr-policies">HR Policies</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <button class="nav-trigger" type="button" aria-expanded="false">Campus &amp; Facilities <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <div class="dropdown-menu">
+            <a href="pages/campus-facilities.html#infrastructure">Infrastructure</a>
+            <a href="pages/campus-facilities.html#library">Library</a>
+            <a href="pages/campus-facilities.html#laboratories">Laboratories</a>
+            <a href="pages/campus-facilities.html#sports-health">Sports &amp; Health</a>
+            <a href="pages/campus-facilities.html#gallery-tour">Gallery &amp; Virtual Tour</a>
+            <a href="pages/campus-facilities.html#sustainability">Sustainability</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <button class="nav-trigger" type="button" aria-expanded="false">Examination &amp; Results <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <div class="dropdown-menu">
+            <a href="pages/examination-results.html#examination-notices">Examination Notices</a>
+            <a href="pages/examination-results.html#exam-schedule">Exam Schedule</a>
+            <a href="pages/examination-results.html#results">Results</a>
+            <a href="pages/examination-results.html#admit-cards">Admit Cards</a>
+            <a href="pages/examination-results.html#exam-forms">Forms</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <button class="nav-trigger" type="button" aria-expanded="false">Downloads &amp; Documents <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <div class="dropdown-menu">
+            <a href="pages/downloads-documents.html#forms">Forms</a>
+            <a href="pages/downloads-documents.html#circulars">Circulars</a>
+            <a href="pages/downloads-documents.html#notices">Notices</a>
+            <a href="pages/downloads-documents.html#tenders">Tenders</a>
+            <a href="pages/downloads-documents.html#reports-documents">Reports &amp; Documents</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <button class="nav-trigger" type="button" aria-expanded="false">Digital Services <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <div class="dropdown-menu">
+            <a href="pages/digital-services.html#erp-login">ERP / Login</a>
+            <a href="pages/digital-services.html#email-services">Email Services</a>
+            <a href="pages/digital-services.html#online-fee-payment">Online Fee Payment</a>
+            <a href="pages/digital-services.html#digital-library">Digital Library</a>
+            <a href="pages/digital-services.html#other-online-services">Other Online Services</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <button class="nav-trigger" type="button" aria-expanded="false">Contact &amp; Directory <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <div class="dropdown-menu">
+            <a href="pages/contact-directory.html#contact-details">Contact Details</a>
+            <a href="pages/contact-directory.html#department-directory">Department Directory</a>
+            <a href="pages/contact-directory.html#location-map">Location Map</a>
+            <a href="pages/contact-directory.html#reach-us">Reach Us</a>
+          </div>
+        </li>
+      </ul>
     </div>
   </nav>
 
@@ -83,10 +197,10 @@
       <span>Latest Updates</span>
       <div class="updates-marquee" aria-live="polite">
         <div class="updates-track">
-          <a href="#">Applications open for Scholarships 2025-26</a>
-          <a href="#">New Centre for Climate &amp; Sustainability launched</a>
-          <a href="#">CU South Bihar ranked among Top Emerging Universities</a>
-          <a href="#">International admissions desk now accepting queries</a>
+          <a href="pages/downloads-documents.html#notices">Applications open for Scholarships 2026-27</a>
+          <a href="pages/research-innovation.html#research-centers">New Centre for Climate &amp; Sustainability launched</a>
+          <a href="pages/about.html#reports-disclosures">CU South Bihar ranked among Top Emerging Universities</a>
+          <a href="pages/admissions.html#admission-overview">International admissions desk now accepting queries</a>
         </div>
       </div>
       <div class="updates-controls" aria-hidden="true">

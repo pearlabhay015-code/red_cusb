@@ -1,5 +1,34 @@
 (function () {
   // Page interactions that depend on loaded shared components.
+  function closeDropdowns(exceptItem) {
+    document.querySelectorAll(".nav-item.is-open").forEach((item) => {
+      if (item === exceptItem) return;
+      item.classList.remove("is-open");
+      item.querySelector(".nav-trigger")?.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  function initDropdowns() {
+    document.querySelectorAll(".nav-trigger").forEach((trigger) => {
+      trigger.setAttribute("aria-haspopup", "true");
+      trigger.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const item = trigger.closest(".nav-item");
+        if (!item) return;
+        const isOpen = !item.classList.contains("is-open");
+        closeDropdowns(item);
+        item.classList.toggle("is-open", isOpen);
+        trigger.setAttribute("aria-expanded", String(isOpen));
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!event.target.closest(".nav-item")) {
+        closeDropdowns();
+      }
+    });
+  }
+
   function initMenu() {
     const toggle = document.querySelector(".menu-toggle");
     const nav = document.querySelector("#primary-navigation");
@@ -10,6 +39,7 @@
       nav.classList.toggle("is-open", isOpen);
       toggle.setAttribute("aria-expanded", String(isOpen));
       toggle.setAttribute("aria-label", isOpen ? "Close main navigation" : "Open main navigation");
+      if (!isOpen) closeDropdowns();
     }
 
     toggle.addEventListener("click", () => {
@@ -25,6 +55,8 @@
       if (event.key === "Escape" && nav.classList.contains("is-open")) {
         setOpen(false);
         toggle.focus();
+      } else if (event.key === "Escape") {
+        closeDropdowns();
       }
     });
   }
@@ -106,6 +138,7 @@
     if (window.initTheme) window.initTheme();
     if (window.initAccessibility) window.initAccessibility();
     initMenu();
+    initDropdowns();
     initScrollButtons();
     initGallery();
     initSearch();

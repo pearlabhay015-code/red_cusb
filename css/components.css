@@ -135,9 +135,14 @@
 }
 .gallery-slide.is-active figcaption { opacity: 1; transform: translateY(0); }
 .gallery-slide figcaption span { display: block; font-size: .78rem; color: rgba(255,255,255,.86); }
-.gallery-nav { position: absolute; top: 74px; }
-.gallery-nav.prev { left: -21px; }
-.gallery-nav.next { right: -21px; }
+.gallery-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, .96);
+}
+.gallery-nav.prev { left: 8px; }
+.gallery-nav.next { right: 8px; }
 .gallery-dots { display: flex; justify-content: center; gap: 12px; }
 .gallery-dots button { width: 9px; height: 9px; border-radius: 50%; border: 0; background: #d3cbcf; padding: 0; }
 .gallery-dots button[aria-current="true"] { background: var(--brand); }
@@ -151,13 +156,89 @@
 .map-panel iframe { width: 100%; height: 190px; border-radius: var(--radius); background: var(--surface-soft); }
 .map-panel p { margin: 14px 0; color: var(--muted); font-size: .9rem; }
 
+.page-section { padding: 24px; }
+.page-section + .page-section { margin-top: 22px; }
+.page-section h2 { margin-bottom: 10px; }
+.page-section p { color: var(--muted); }
+.page-section iframe {
+  width: 100%;
+  height: 320px;
+  border-radius: var(--radius);
+  background: var(--surface-soft);
+}
+
+.link-grid,
+.sitemap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.info-card,
+.sitemap-card {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.info-card h3,
+.sitemap-card h2,
+.sitemap-card h3 {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+.info-card ul,
+.sitemap-card ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+}
+
+.info-card a,
+.sitemap-card a {
+  color: var(--brand);
+  font-weight: 800;
+}
+
+.page-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.service-list {
+  display: grid;
+  gap: 10px;
+}
+
+.service-list a {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-weight: 800;
+}
+
+.service-list a span { color: var(--muted); font-weight: 600; }
+
 .site-footer { margin-top: 28px; background: linear-gradient(180deg, var(--brand), #4b0606); color: #fff; }
 .footer-grid { display: grid; grid-template-columns: 1.4fr repeat(5, 1fr); gap: 34px; padding: 38px 0 30px; }
 .footer-grid h2 { font-family: var(--font-body); font-size: .95rem; margin-bottom: 14px; }
 .footer-grid nav a, .footer-map-link { display: block; color: rgba(255,255,255,.84); margin: 8px 0; font-size: .9rem; }
 .footer-brand p, .footer-grid section p { color: rgba(255,255,255,.82); }
-.footer-logo .brand-seal { width: 68px; height: 68px; }
+.footer-logo .brand-logo { width: 68px; height: 68px; }
 .footer-logo strong { font-size: 1rem; }
+.footer-logo small { color: rgba(255,255,255,.82); }
 .social-links { display: flex; gap: 10px; }
 .social-links a { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.28); border-radius: 50%; }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,.15); }
@@ -169,7 +250,7 @@
 .keyboard-dialog::backdrop { background: rgba(0,0,0,.45); }
 
 @media (max-width: 1180px) {
-  .program-grid, .leaders-grid { grid-template-columns: repeat(2, 1fr); }
+  .program-grid, .leaders-grid, .link-grid, .sitemap-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
@@ -182,7 +263,7 @@
     padding: 16px;
   }
   .feature-card { grid-template-columns: 1fr; }
-  .program-grid, .leaders-grid, .footer-grid { grid-template-columns: 1fr; }
+  .program-grid, .leaders-grid, .link-grid, .sitemap-grid, .footer-grid { grid-template-columns: 1fr; }
   .leader-card { grid-template-columns: 86px 1fr; }
   .leader-card img { width: 86px; height: 104px; }
   .gallery-track {
@@ -201,7 +282,11 @@
     padding: 8px;
   }
   .gallery-slide figcaption span { display: none; }
-  .gallery-nav { display: none; }
+  .gallery-nav {
+    display: grid;
+    width: 38px;
+    height: 38px;
+  }
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .stats-grid div {
     min-height: 86px;
