@@ -1,6 +1,6 @@
 .accessibility-bar {
   /* Header layout mirrors the reference: tools, identity/search, nav, updates. */
-  background: #f1f1f1;
+  background: rgba(225, 182, 246, 0.853) ;
   border-bottom: 1px solid var(--border);
   font-size: .9rem;
 }
@@ -19,7 +19,7 @@
 .audience-links { margin-left: auto; display: flex; gap: 24px; }
 
 .utility-header {
-  background: var(--surface);
+  background: rgba(233, 146, 251, 0.253);
   border-bottom: 1px solid var(--border);
 }
 
