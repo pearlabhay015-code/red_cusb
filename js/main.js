@@ -51,7 +51,7 @@
     const dots = gallery.querySelector(".gallery-dots");
     let activeIndex = Math.max(0, slides.findIndex((slide) => slide.classList.contains("is-active")));
 
-    function activate(index) {
+    function activate(index, shouldScroll = true) {
       activeIndex = (index + slides.length) % slides.length;
       slides.forEach((slide, slideIndex) => {
         slide.classList.toggle("is-active", slideIndex === activeIndex);
@@ -59,7 +59,9 @@
       dots.querySelectorAll("button").forEach((dot, dotIndex) => {
         dot.setAttribute("aria-current", String(dotIndex === activeIndex));
       });
-      slides[activeIndex].scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      if (shouldScroll) {
+        slides[activeIndex].scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      }
     }
 
     slides.forEach((slide, index) => {
@@ -77,7 +79,7 @@
       if (event.key === "ArrowLeft") activate(activeIndex - 1);
       if (event.key === "ArrowRight") activate(activeIndex + 1);
     });
-    activate(activeIndex);
+    activate(activeIndex, false);
   }
 
   function initSearch() {
