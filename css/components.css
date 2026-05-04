@@ -106,8 +106,8 @@
 .leader-card p { margin-bottom: 6px; font-weight: 700; font-size: .85rem; }
 .leader-card a { display: inline-flex; align-items: center; gap: 5px; margin-top: 8px; color: var(--brand); font-weight: 800; font-size: .84rem; }
 
-.gallery-carousel { position: relative; }
-.gallery-track { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 6px 2px 26px; }
+.gallery-carousel { position: relative; width: 100%; max-width: 100%; min-width: 0; }
+.gallery-track { display: flex; width: 100%; max-width: 100%; min-width: 0; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 6px 2px 26px; }
 .gallery-track::-webkit-scrollbar { display: none; }
 .gallery-slide {
   position: relative;
@@ -174,14 +174,26 @@
 }
 
 @media (max-width: 720px) {
-  .events-panel, .news-panel, .gallery-panel, .stats-panel, .map-panel, .prose { padding: 16px; }
+  .events-panel, .news-panel, .gallery-panel, .stats-panel, .map-panel, .prose {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    padding: 16px;
+  }
   .feature-card { grid-template-columns: 1fr; }
   .program-grid, .leaders-grid, .footer-grid { grid-template-columns: 1fr; }
   .leader-card { grid-template-columns: 86px 1fr; }
   .leader-card img { width: 86px; height: 104px; }
-  .gallery-track { gap: 10px; padding-bottom: 18px; }
+  .gallery-track {
+    width: 100%;
+    max-width: 100%;
+    gap: 10px;
+    padding-bottom: 18px;
+  }
   .gallery-slide, .gallery-slide.is-active {
-    flex-basis: min(82vw, 280px);
+    min-width: 0;
+    flex-basis: min(72vw, 250px);
     height: clamp(150px, 48vw, 190px);
   }
   .gallery-slide figcaption {
@@ -195,7 +207,28 @@
     min-height: 86px;
     padding: 10px 6px;
   }
-  .map-panel iframe { height: clamp(150px, 48vw, 210px); }
+  .map-panel iframe {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: clamp(150px, 48vw, 210px);
+  }
   .map-panel p { font-size: .84rem; overflow-wrap: anywhere; }
   .footer-bottom .container, .footer-bottom nav { align-items: flex-start; flex-direction: column; }
+}
+
+@media (max-width: 820px) {
+  .lower-grid > .gallery-panel,
+  .lower-grid > .stats-panel,
+  .lower-grid > .map-panel {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .gallery-panel .section-head a,
+  .map-panel .section-head a {
+    overflow-wrap: anywhere;
+  }
 }

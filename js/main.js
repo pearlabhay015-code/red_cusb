@@ -3,6 +3,7 @@
   function initMenu() {
     const toggle = document.querySelector(".menu-toggle");
     const nav = document.querySelector("#primary-navigation");
+    const close = document.querySelector("[data-menu-close]");
     if (!toggle || !nav) return;
 
     function setOpen(isOpen) {
@@ -13,6 +14,11 @@
 
     toggle.addEventListener("click", () => {
       setOpen(!nav.classList.contains("is-open"));
+    });
+
+    close?.addEventListener("click", () => {
+      setOpen(false);
+      toggle.focus();
     });
 
     document.addEventListener("keydown", (event) => {
