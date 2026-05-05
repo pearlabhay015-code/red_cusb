@@ -20,7 +20,7 @@
     <section class="hero" aria-labelledby="hero-title">
       <picture>
         <source media="(max-width: 720px)" srcset="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=900&q=75">
-        <img src="./assets/malviya.jpeg" alt="Students walking across a modern university campus" loading="eager">
+        <img src="./assets/aryabhatta.jpeg" alt="Students walking across a modern university campus" loading="eager">
       </picture>
       <div class="hero-overlay"></div>
       <div class="container hero-content">
@@ -114,14 +114,20 @@
         <div class="gallery-carousel" data-gallery>
           <button type="button" class="gallery-nav prev" data-gallery-prev aria-label="Previous gallery image"><i data-lucide="chevron-left" aria-hidden="true"></i></button>
           <div class="gallery-track" tabindex="0" aria-label="Campus gallery carousel">
-            <figure class="gallery-slide"><img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=520&q=75" alt="University campus building" loading="lazy"><figcaption><strong>Campus Green</strong><span>Modern academic spaces surrounded by open lawns.</span></figcaption></figure>
-            <figure class="gallery-slide is-active"><img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=520&q=75" alt="Students in laboratory" loading="lazy"><figcaption><strong>Research Labs</strong><span>Hands-on learning with contemporary facilities.</span></figcaption></figure>
-            <figure class="gallery-slide"><img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=520&q=75" alt="Library reading room" loading="lazy"><figcaption><strong>Central Library</strong><span>Quiet study zones, journals and digital collections.</span></figcaption></figure>
-            <figure class="gallery-slide"><img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=520&q=75" alt="Students celebrating graduation" loading="lazy"><figcaption><strong>Convocation</strong><span>Milestones celebrated with the university community.</span></figcaption></figure>
+            <figure class="gallery-slide" data-gallery-id="campus-green"><img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=520&q=75" alt="University campus building" loading="lazy"><figcaption><strong>Campus Green</strong><span>Modern academic spaces surrounded by open lawns.</span></figcaption></figure>
+            <figure class="gallery-slide is-active" data-gallery-id="research-labs"><img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=520&q=75" alt="Students in laboratory" loading="lazy"><figcaption><strong>Research Labs</strong><span>Hands-on learning with contemporary facilities.</span></figcaption></figure>
+            <figure class="gallery-slide" data-gallery-id="central-library"><img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=520&q=75" alt="Library reading room" loading="lazy"><figcaption><strong>Central Library</strong><span>Quiet study zones, journals and digital collections.</span></figcaption></figure>
+            <figure class="gallery-slide" data-gallery-id="convocation"><img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=520&q=75" alt="Students celebrating graduation" loading="lazy"><figcaption><strong>Convocation</strong><span>Milestones celebrated with the university community.</span></figcaption></figure>
           </div>
           <button type="button" class="gallery-nav next" data-gallery-next aria-label="Next gallery image"><i data-lucide="chevron-right" aria-hidden="true"></i></button>
           <div class="gallery-dots" aria-label="Gallery pagination"></div>
         </div>
+        <article class="gallery-detail-card" data-gallery-summary aria-live="polite">
+          <span data-gallery-summary-category>Featured Campus Space</span>
+          <h3 data-gallery-summary-title>Research Labs</h3>
+          <p data-gallery-summary-text>Hands-on learning spaces with contemporary equipment, collaborative benches and guided research support.</p>
+          <a class="text-link" data-gallery-summary-link href="pages/gallery-detail.html?id=research-labs">View More <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+        </article>
       </article>
 
       <article class="panel stats-panel" aria-labelledby="why-title">

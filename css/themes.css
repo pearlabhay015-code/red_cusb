@@ -6,9 +6,10 @@ body.theme-dark {
   --ink: #f6f4f4;
   --muted: #c8c0c6;
   --border: #333647;
-  --brand: #9b1b1b;
-  --brand-dark: #7f1212;
+  --brand: #d157ff;
+  --brand-dark: #b530e4;
   --shadow: 0 18px 50px rgba(0, 0, 0, .25);
+  background: var(--bg);
 }
 
 body.theme-dark .accessibility-bar,
@@ -16,9 +17,92 @@ body.theme-dark .utility-header,
 body.theme-dark .main-nav,
 body.theme-dark .tool-btn,
 body.theme-dark .site-search,
-body.theme-dark .menu-toggle {
+body.theme-dark .menu-toggle,
+body.theme-dark .scroll-btn,
+body.theme-dark .gallery-nav,
+body.theme-dark .keyboard-dialog {
   background: var(--surface);
   color: var(--ink);
+}
+
+body.theme-dark input,
+body.theme-dark select,
+body.theme-dark textarea {
+  background: var(--surface);
+  color: var(--ink);
+}
+
+body.theme-dark .site-search {
+  border-color: var(--border);
+}
+
+body.theme-dark .site-search input::placeholder {
+  color: #aaa3b0;
+}
+
+body.theme-dark .btn.secondary,
+body.theme-dark .btn.light,
+body.theme-dark .quick-list,
+body.theme-dark .gallery-detail-card,
+body.theme-dark .event-list time,
+body.theme-dark .leader-card,
+body.theme-dark .info-card,
+body.theme-dark .sitemap-card,
+body.theme-dark .service-list a {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--border);
+}
+
+body.theme-dark .panel,
+body.theme-dark .glass-panel {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--border);
+}
+
+body.theme-dark .quick-list a,
+body.theme-dark .event-list a,
+body.theme-dark .news-list a {
+  color: var(--ink);
+}
+
+body.theme-dark .quick-list small,
+body.theme-dark .event-list small,
+body.theme-dark .news-list small,
+body.theme-dark .program-card small,
+body.theme-dark .leader-card small,
+body.theme-dark .service-list a span,
+body.theme-dark .page-section p,
+body.theme-dark .map-panel p,
+body.theme-dark .stats-grid span {
+  color: var(--muted);
+}
+
+body.theme-dark .program-card,
+body.theme-dark .lavender,
+body.theme-dark .mint,
+body.theme-dark .gold,
+body.theme-dark .rose {
+  background: #222535;
+  color: var(--ink);
+  border-color: var(--border);
+}
+
+body.theme-dark .program-card > svg:first-child {
+  background: #303447;
+  color: var(--brand);
+}
+
+body.theme-dark .stats-grid,
+body.theme-dark .stats-grid div {
+  border-color: var(--border);
+}
+
+body.theme-dark .dropdown-menu a:hover,
+body.theme-dark .dropdown-menu a:focus-visible {
+  background: var(--surface-soft);
+  color: #f0c8ff;
 }
 
 body.theme-dark .hero-overlay {

@@ -3,6 +3,8 @@
   const fontStorageKey = "cusb-font-scale";
   const dyslexiaStorageKey = "cusb-dyslexia";
   let speechUtterance = null;
+  let speechStartButtons = [];
+  let speechStopButtons = [];
 
   function setFontScale(scale) {
     const nextScale = Math.min(1.2, Math.max(.9, scale));
@@ -15,23 +17,39 @@
     return main ? main.innerText.replace(/\s+/g, " ").trim() : document.body.innerText;
   }
 
-  function toggleSpeech(button) {
+  function setSpeechActive(isActive) {
+    speechStartButtons.forEach((button) => {
+      button.setAttribute("aria-pressed", String(isActive));
+      button.disabled = isActive;
+    });
+    speechStopButtons.forEach((button) => {
+      button.disabled = !isActive;
+    });
+  }
+
+  function startSpeech(button) {
     if (!("speechSynthesis" in window)) {
-      button.textContent = "Speech unavailable";
+      const label = button.querySelector("span");
+      if (label) label.textContent = "Speech unavailable";
       return;
     }
 
     if (window.speechSynthesis.speaking) {
       window.speechSynthesis.cancel();
-      button.setAttribute("aria-pressed", "false");
-      return;
     }
 
     speechUtterance = new SpeechSynthesisUtterance(pageText());
     speechUtterance.rate = .95;
-    speechUtterance.onend = () => button.setAttribute("aria-pressed", "false");
-    button.setAttribute("aria-pressed", "true");
+    speechUtterance.onend = () => setSpeechActive(false);
+    speechUtterance.onerror = () => setSpeechActive(false);
+    setSpeechActive(true);
     window.speechSynthesis.speak(speechUtterance);
+  }
+
+  function stopSpeech() {
+    if (!("speechSynthesis" in window)) return;
+    window.speechSynthesis.cancel();
+    setSpeechActive(false);
   }
 
   function initDialog() {
@@ -42,6 +60,31 @@
 
     openButton.addEventListener("click", () => dialog.showModal());
     closeButton.addEventListener("click", () => dialog.close());
+  }
+
+  function initAccessibilityPanel() {
+    const widget = document.querySelector(".accessibility-widget");
+    const toggle = document.querySelector("[data-accessibility-toggle]");
+    const panel = document.querySelector("[data-accessibility-panel]");
+    if (!widget || !toggle || !panel) return;
+
+    function setOpen(isOpen) {
+      panel.hidden = !isOpen;
+      widget.classList.toggle("is-open", isOpen);
+      toggle.setAttribute("aria-expanded", String(isOpen));
+    }
+
+    toggle.addEventListener("click", () => {
+      setOpen(panel.hidden);
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!widget.contains(event.target)) setOpen(false);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setOpen(false);
+    });
   }
 
   window.initAccessibility = function initAccessibility() {
@@ -58,9 +101,16 @@
       });
     });
 
-    document.querySelectorAll("[data-speech-toggle]").forEach((button) => {
+    speechStartButtons = Array.from(document.querySelectorAll("[data-speech-start], [data-speech-toggle]"));
+    speechStopButtons = Array.from(document.querySelectorAll("[data-speech-stop]"));
+
+    speechStartButtons.forEach((button) => {
       button.setAttribute("aria-pressed", "false");
-      button.addEventListener("click", () => toggleSpeech(button));
+      button.addEventListener("click", () => startSpeech(button));
+    });
+
+    speechStopButtons.forEach((button) => {
+      button.addEventListener("click", stopSpeech);
     });
 
     document.querySelectorAll("[data-dyslexia-toggle]").forEach((button) => {
@@ -80,5 +130,6 @@
     });
 
     initDialog();
+    initAccessibilityPanel();
   };
 })();

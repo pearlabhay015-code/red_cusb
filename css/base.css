@@ -2,18 +2,23 @@
   /* Design tokens shared by every page and component. */
   --font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-display: "Playfair Display", Georgia, serif;
-  --bg: #f8f8f7;
+  --bg: #f3f8ff;
   --surface: #ffffff;
-  --surface-soft: #f4f1f4;
-  --ink: #141116;
-  --muted: #5d5661;
-  --border: #e6e0e3;
-  --brand: #630084;
-  --brand-dark: #300245;
-  --navy: #171929;
-  --accent: #b8893a;
-  --focus: #1f6feb;
-  --shadow: 0 18px 50px rgba(22, 17, 19, .09);
+  --surface-soft: #eaf2ff;
+  --ink: #172033;
+  --muted: #5d6680;
+  --border: #dbe7fb;
+  --brand: #7435d8;
+  --brand-dark: #5120aa;
+  --brand-soft: #efe7ff;
+  --blue: #2563eb;
+  --blue-soft: #dbeafe;
+  --rose: #ec4899;
+  --rose-soft: #ffe4f1;
+  --navy: #172554;
+  --accent: #ec4899;
+  --focus: #2563eb;
+  --shadow: 0 18px 50px rgba(37, 99, 235, .11);
   --radius: 8px;
   --container: 1440px;
   --font-scale: 1;
@@ -29,7 +34,9 @@ html {
 body {
   margin: 0;
   color: var(--ink);
-  background: var(--bg);
+  background:
+    radial-gradient(circle at top left, rgba(37, 99, 235, .12), transparent 34rem),
+    linear-gradient(180deg, #f3f8ff 0%, #f8fbff 42%, #fff7fb 100%);
   font-family: var(--font-body);
   line-height: 1.5;
   text-rendering: optimizeLegibility;
@@ -105,8 +112,8 @@ h1, h2 { font-family: var(--font-display); }
 }
 
 .btn:hover { transform: translateY(-1px); }
-.btn.primary { background: var(--brand); color: #fff; box-shadow: 0 10px 25px rgba(111, 9, 9, .25); }
-.btn.primary:hover { background: var(--brand-dark); color: #fff; }
+.btn.primary { background: linear-gradient(135deg, var(--blue), var(--brand)); color: #fff; box-shadow: 0 10px 25px rgba(91, 61, 216, .25); }
+.btn.primary:hover { background: linear-gradient(135deg, var(--brand-dark), var(--rose)); color: #fff; }
 .btn.secondary, .btn.light { background: #fff; color: var(--brand); border-color: var(--border); }
 .btn.compact { min-height: 40px; padding: 9px 14px; font-size: .9rem; }
 
@@ -118,7 +125,7 @@ h1, h2 { font-family: var(--font-display); }
 }
 
 .glass-panel {
-  background: rgb(94, 64, 119);
+  background: linear-gradient(145deg, rgba(37, 99, 235, .86), rgba(116, 53, 216, .9));
   border: 1px solid rgba(255, 255, 255, .2);
   backdrop-filter: blur(14px);
   color: #fff;
