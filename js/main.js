@@ -71,7 +71,6 @@
   function initMenu() {
     const toggle = document.querySelector(".menu-toggle");
     const nav = document.querySelector("#primary-navigation");
-    const close = document.querySelector("[data-menu-close]");
     if (!toggle || !nav) return;
 
     function setOpen(isOpen) {
@@ -83,11 +82,6 @@
 
     toggle.addEventListener("click", () => {
       setOpen(!nav.classList.contains("is-open"));
-    });
-
-    close?.addEventListener("click", () => {
-      setOpen(false);
-      toggle.focus();
     });
 
     document.addEventListener("keydown", (event) => {
@@ -140,6 +134,40 @@
       sync();
     });
     desktopQuery.addEventListener?.("change", () => {
+      measure();
+      sync();
+    });
+  }
+
+  function initStickyMenuToggle() {
+    const toggle = document.querySelector(".menu-toggle");
+    if (!toggle) return;
+
+    const mobileQuery = window.matchMedia("(max-width: 1100px)");
+    let toggleTop = 0;
+
+    function measure() {
+      toggle.classList.remove("is-stuck");
+      toggleTop = toggle.getBoundingClientRect().top + window.scrollY;
+    }
+
+    function sync() {
+      if (!mobileQuery.matches) {
+        toggle.classList.remove("is-stuck");
+        return;
+      }
+
+      toggle.classList.toggle("is-stuck", window.scrollY >= toggleTop);
+    }
+
+    measure();
+    sync();
+    window.addEventListener("scroll", sync, { passive: true });
+    window.addEventListener("resize", () => {
+      measure();
+      sync();
+    });
+    mobileQuery.addEventListener?.("change", () => {
       measure();
       sync();
     });
@@ -280,6 +308,7 @@
     initMenu();
     initDropdowns();
     initStickyNav();
+    initStickyMenuToggle();
     initScrollButtons();
     initBackToTop();
     initGallery();
