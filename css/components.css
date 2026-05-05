@@ -407,8 +407,30 @@
 .footer-logo .brand-logo { width: 68px; height: 68px; }
 .footer-logo strong { font-size: 1rem; }
 .footer-logo small { color: rgba(255,255,255,.82); }
-.social-links { display: flex; gap: 10px; }
-.social-links a { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.28); border-radius: 50%; }
+.social-links { display: flex; gap: 10px; margin-top: 14px; }
+.social-links a {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.32);
+  border-radius: 50%;
+  background: rgba(255,255,255,.08);
+  transition: background .2s ease, border-color .2s ease, transform .18s ease;
+}
+.social-links a:hover { transform: translateY(-3px); border-color: transparent; }
+.social-links svg {
+  width: 17px;
+  height: 17px;
+  fill: #fff;
+  display: block;
+}
+/* Per-brand hover backgrounds */
+.social-links a.social-facebook:hover  { background: #1877f2; }
+.social-links a.social-youtube:hover   { background: #ff0000; }
+.social-links a.social-instagram:hover { background: radial-gradient(circle at 30% 110%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%); }
+.social-links a.social-twitter:hover   { background: #000; }
+.social-links a.social-linkedin:hover  { background: #0a66c2; }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,.15); }
 .footer-bottom .container { min-height: 58px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .footer-bottom p { margin: 0; color: rgba(255,255,255,.8); }
