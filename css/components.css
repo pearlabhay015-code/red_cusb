@@ -17,8 +17,33 @@
   font-weight: 700;
 }
 
-.language-select { display: inline-flex; align-items: center; gap: 6px; }
+.language-select {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  z-index: 1001;
+  transition: transform .28s ease, background-color .28s ease, box-shadow .28s ease;
+}
+
 .language-select select { border: 0; background: transparent; font-weight: 800; }
+
+body.has-translate-banner .language-select {
+  transform: translateY(var(--translate-banner-offset, 42px));
+  background: var(--surface);
+  border-radius: 6px;
+  box-shadow: 0 10px 22px rgba(10, 8, 10, .14);
+  padding: 4px 8px;
+}
+
+#google_translate_element,
+.goog-te-gadget {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
 
 .accessibility-widget {
   position: fixed;

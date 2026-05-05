@@ -201,6 +201,46 @@
     syncVisibility();
   }
 
+  function initCampusDirections() {
+    const buttons = document.querySelectorAll("[data-campus-directions]");
+    if (!buttons.length) return;
+
+    const destination = "Central University of South Bihar, Gaya, Bihar";
+    const fallbackUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destination)}&travelmode=driving`;
+
+    function directionsUrl(origin) {
+      const originPart = origin ? `origin=${encodeURIComponent(origin)}&` : "";
+      return `https://www.google.com/maps/dir/?api=1&${originPart}destination=${encodeURIComponent(destination)}&travelmode=driving`;
+    }
+
+    buttons.forEach((button) => {
+      button.href = fallbackUrl;
+      button.addEventListener("click", (event) => {
+        if (!navigator.geolocation) {
+          window.alert("Location is not available on this device. Google Maps will open so you can choose your starting location.");
+          return;
+        }
+
+        event.preventDefault();
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const origin = `${position.coords.latitude},${position.coords.longitude}`;
+            window.location.href = directionsUrl(origin);
+          },
+          () => {
+            window.alert("Please turn on location access, or choose your starting location manually in Google Maps.");
+            window.location.href = fallbackUrl;
+          },
+          {
+            enableHighAccuracy: true,
+            timeout: 10000,
+            maximumAge: 60000
+          }
+        );
+      });
+    });
+  }
+
   function initGallery() {
     const gallery = document.querySelector("[data-gallery]");
     if (!gallery) return;
@@ -311,6 +351,7 @@
     initStickyMenuToggle();
     initScrollButtons();
     initBackToTop();
+    initCampusDirections();
     initGallery();
     initGalleryDetailPage();
     initSearch();

@@ -2,9 +2,12 @@
   // Accessibility controls: font scaling, speech, dyslexia mode and help dialog.
   const fontStorageKey = "cusb-font-scale";
   const dyslexiaStorageKey = "cusb-dyslexia";
+  const languageStorageKey = "cusb-language";
+  const translateLanguages = "en,hi,bn,gu,kn,ml,mr,pa,ta,te,ur";
   let speechUtterance = null;
   let speechStartButtons = [];
   let speechStopButtons = [];
+  let translateLoaded = false;
 
   function setFontScale(scale) {
     const nextScale = Math.min(1.2, Math.max(.9, scale));
@@ -87,6 +90,95 @@
     });
   }
 
+  function setCookie(name, value) {
+    const maxAge = 60 * 60 * 24 * 365;
+    document.cookie = `${name}=${value};path=/;max-age=${maxAge}`;
+    if (window.location.hostname.includes(".")) {
+      document.cookie = `${name}=${value};path=/;domain=${window.location.hostname};max-age=${maxAge}`;
+    }
+  }
+
+  function loadTranslate() {
+    if (translateLoaded || window.google?.translate?.TranslateElement) return;
+    translateLoaded = true;
+    window.googleTranslateElementInit = function googleTranslateElementInit() {
+      new window.google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: translateLanguages,
+        autoDisplay: false
+      }, "google_translate_element");
+    };
+
+    const mount = document.createElement("div");
+    mount.id = "google_translate_element";
+    mount.setAttribute("aria-hidden", "true");
+    document.body.appendChild(mount);
+
+    const script = document.createElement("script");
+    script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    script.async = true;
+    document.head.appendChild(script);
+  }
+
+  function syncTranslateBanner() {
+    const banner = document.querySelector(".goog-te-banner-frame, iframe.skiptranslate");
+    const isVisible = Boolean(banner && banner.offsetParent !== null && banner.offsetHeight > 0);
+    const bannerHeight = isVisible ? banner.offsetHeight : 0;
+    const isTranslated = document.documentElement.classList.contains("translated-ltr") || document.documentElement.classList.contains("translated-rtl");
+    document.body.classList.toggle("has-translate-banner", isVisible);
+    document.documentElement.style.setProperty("--translate-banner-offset", `${bannerHeight + 8}px`);
+
+    const combo = document.querySelector(".goog-te-combo");
+    if (combo && (!combo.value || !isTranslated) && localStorage.getItem(languageStorageKey) !== "en") {
+      localStorage.setItem(languageStorageKey, "en");
+      document.documentElement.lang = "en";
+      document.querySelectorAll("[data-language-select]").forEach((select) => {
+        select.value = "en";
+      });
+    }
+  }
+
+  function initTranslateBannerWatcher() {
+    syncTranslateBanner();
+    const observer = new MutationObserver(syncTranslateBanner);
+    observer.observe(document.documentElement, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ["class", "style"]
+    });
+    window.addEventListener("resize", syncTranslateBanner);
+  }
+
+  function applyLanguage(language) {
+    const nextLanguage = language || "en";
+    document.documentElement.lang = nextLanguage;
+    localStorage.setItem(languageStorageKey, nextLanguage);
+
+    if (nextLanguage === "en") {
+      setCookie("googtrans", "/en/en");
+      const combo = document.querySelector(".goog-te-combo");
+      if (combo) {
+        combo.value = "";
+        combo.dispatchEvent(new Event("change"));
+      }
+      window.setTimeout(syncTranslateBanner, 300);
+      return;
+    } else {
+      setCookie("googtrans", `/en/${nextLanguage}`);
+      loadTranslate();
+    }
+
+    const combo = document.querySelector(".goog-te-combo");
+    if (combo && combo.value !== nextLanguage) {
+      combo.value = nextLanguage;
+      combo.dispatchEvent(new Event("change"));
+      window.setTimeout(syncTranslateBanner, 300);
+    } else if (!combo && nextLanguage !== "en") {
+      window.setTimeout(() => applyLanguage(nextLanguage), 500);
+    }
+  }
+
   window.initAccessibility = function initAccessibility() {
     setFontScale(Number(localStorage.getItem(fontStorageKey)) || 1);
     document.body.classList.toggle("dyslexia-mode", localStorage.getItem(dyslexiaStorageKey) === "true");
@@ -123,12 +215,19 @@
       });
     });
 
+    const savedLanguage = localStorage.getItem(languageStorageKey) || "en";
+    document.documentElement.lang = savedLanguage;
+
     document.querySelectorAll("[data-language-select]").forEach((select) => {
+      select.value = savedLanguage;
       select.addEventListener("change", () => {
-        document.documentElement.lang = select.value;
+        applyLanguage(select.value);
       });
     });
 
+    if (savedLanguage !== "en") applyLanguage(savedLanguage);
+
+    initTranslateBannerWatcher();
     initDialog();
     initAccessibilityPanel();
   };

@@ -13,15 +13,25 @@
         <span class="sr-only">Select language</span>
         <i data-lucide="globe-2" aria-hidden="true"></i>
         <select data-language-select aria-label="Language selector">
-          <option value="en">EN</option>
-          <option value="hi">HI</option>
+          <option value="en">English</option>
+          <option value="hi">Hindi</option>
+          <option value="bn">Bengali</option>
+          <option value="gu">Gujarati</option>
+          <option value="kn">Kannada</option>
+          <option value="ml">Malayalam</option>
+          <option value="mr">Marathi</option>
+          <option value="pa">Punjabi</option>
+          <option value="ta">Tamil</option>
+          <option value="te">Telugu</option>
+          <option value="ur">Urdu</option>
         </select>
       </label>
     </div>
   </section>
 
   <aside class="accessibility-widget" aria-label="Accessibility tools">
-    <button class="accessibility-toggle" type="button" data-accessibility-toggle aria-expanded="false" aria-controls="accessibility-panel">
+    <button class="accessibility-toggle" type="button" data-accessibility-toggle aria-expanded="false"
+      aria-controls="accessibility-panel">
       <i data-lucide="accessibility" aria-hidden="true"></i>
       <span>Accessibility</span>
     </button>
@@ -35,10 +45,12 @@
         <i data-lucide="sun" aria-hidden="true"></i><span>Light</span>
       </button>
       <div class="reader-controls" aria-label="Screen reader controls">
-        <button class="tool-btn icon-text" type="button" data-speech-start aria-label="Start reading page content aloud">
+        <button class="tool-btn icon-text" type="button" data-speech-start
+          aria-label="Start reading page content aloud">
           <i data-lucide="volume-2" aria-hidden="true"></i><span>Start Reader</span>
         </button>
-        <button class="tool-btn icon-text" type="button" data-speech-stop aria-label="Stop reading page content" disabled>
+        <button class="tool-btn icon-text" type="button" data-speech-stop aria-label="Stop reading page content"
+          disabled>
           <i data-lucide="volume-x" aria-hidden="true"></i><span>Stop Reader</span>
         </button>
       </div>
@@ -54,22 +66,29 @@
   <section class="utility-header" aria-label="University identity and search">
     <div class="container utility-grid">
       <a class="brand" href="index.html" aria-label="Central University of South Bihar home">
-        <img class="brand-logo" src="assets/images/culog.png" alt="Central University of South Bihar emblem" width="86" height="86">
+        <img class="brand-logo" src="assets/images/culog.png" alt="Central University of South Bihar emblem" width="86"
+          height="86">
         <span>
-          <strong>Central University<br>of South Bihar</strong>
+          <strong>Central University of<br>South Bihar</strong>
           <small>ज्ञान सेवा विमुक्तये</small>
         </span>
       </a>
       <form class="site-search" role="search" aria-label="Site search">
         <label class="sr-only" for="site-search-input">Search the university website</label>
         <i data-lucide="search" aria-hidden="true"></i>
-        <input id="site-search-input" type="search" placeholder="Search for courses, programs, people, news..." autocomplete="off">
+        <input id="site-search-input" type="search" placeholder="Search for courses, programs, people, news..."
+          autocomplete="off">
         <button type="submit" aria-label="Submit search">Search <i data-lucide="search" aria-hidden="true"></i></button>
       </form>
+      <div class="header-badges" aria-label="Institutional recognition and national mission">
+        <img src="assets/images/viksit.png" alt="Viksit Bharat Abhiyan 1947 to 2047" width="328" height="174">
+        <img src="assets/images/NAAC.png" alt="NAAC accredited with grade A plus plus" width="721" height="316">
+      </div>
       <div class="header-actions">
-        <a class="quiet-link" href="pages/downloads-documents.html#notices" aria-label="View notices"><i data-lucide="calendar-days" aria-hidden="true"></i>Notices</a>
-        <a class="btn primary" href="pages/admissions.html#application-process" aria-label="Apply now for admission">Apply Now <i data-lucide="arrow-right" aria-hidden="true"></i></a>
-        <button class="menu-toggle" type="button" aria-label="Open main navigation" aria-expanded="false" aria-controls="primary-navigation">
+        <a class="btn primary" href="pages/admissions.html#application-process"
+          aria-label="Apply now for admission">Apply Now <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+        <button class="menu-toggle" type="button" aria-label="Open main navigation" aria-expanded="false"
+          aria-controls="primary-navigation">
           <i data-lucide="menu" aria-hidden="true"></i>
         </button>
       </div>
@@ -80,8 +99,10 @@
     <div class="container nav-inner">
       <ul class="nav-list" role="list">
         <li class="nav-item">
-          <button class="nav-trigger" type="button" aria-expanded="false">Home <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <button class="nav-trigger" type="button" aria-expanded="false">Home <i data-lucide="chevron-down"
+              aria-hidden="true"></i></button>
           <div class="dropdown-menu">
+            <a href="index.html">Home Page</a>
             <a href="index.html#news-title">Highlights</a>
             <a href="index.html#quick-actions">Quick Actions</a>
             <a href="index.html#programs-title">Featured Sections</a>
@@ -89,7 +110,8 @@
           </div>
         </li>
         <li class="nav-item">
-          <button class="nav-trigger" type="button" aria-expanded="false">About <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <button class="nav-trigger" type="button" aria-expanded="false">About <i data-lucide="chevron-down"
+              aria-hidden="true"></i></button>
           <div class="dropdown-menu">
             <a href="pages/about.html#overview">Overview</a>
             <a href="pages/about.html#vision-mission">Vision &amp; Mission</a>
@@ -99,7 +121,8 @@
           </div>
         </li>
         <li class="nav-item">
-          <button class="nav-trigger" type="button" aria-expanded="false">Academics <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <button class="nav-trigger" type="button" aria-expanded="false">Academics <i data-lucide="chevron-down"
+              aria-hidden="true"></i></button>
           <div class="dropdown-menu">
             <a href="pages/academics.html#academic-structure">Academic Structure</a>
             <a href="pages/academics.html#programs">Programs</a>
@@ -107,7 +130,8 @@
           </div>
         </li>
         <li class="nav-item">
-          <button class="nav-trigger" type="button" aria-expanded="false">Admissions <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <button class="nav-trigger" type="button" aria-expanded="false">Admissions <i data-lucide="chevron-down"
+              aria-hidden="true"></i></button>
           <div class="dropdown-menu">
             <a href="pages/admissions.html#admission-overview">Admission Overview</a>
             <a href="pages/admissions.html#programs-eligibility">Programs &amp; Eligibility</a>
@@ -119,7 +143,8 @@
           </div>
         </li>
         <li class="nav-item">
-          <button class="nav-trigger" type="button" aria-expanded="false">Research &amp; Innovation <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <button class="nav-trigger" type="button" aria-expanded="false">Research &amp; Innovation <i
+              data-lucide="chevron-down" aria-hidden="true"></i></button>
           <div class="dropdown-menu">
             <a href="pages/research-innovation.html#research-areas">Research Areas</a>
             <a href="pages/research-innovation.html#projects-publications">Projects &amp; Publications</a>
@@ -129,7 +154,8 @@
           </div>
         </li>
         <li class="nav-item">
-          <button class="nav-trigger" type="button" aria-expanded="false">Students <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <button class="nav-trigger" type="button" aria-expanded="false">Students <i data-lucide="chevron-down"
+              aria-hidden="true"></i></button>
           <div class="dropdown-menu">
             <a href="pages/students.html#academic-support">Academic Support</a>
             <a href="pages/students.html#student-services">Student Services</a>
@@ -139,7 +165,8 @@
           </div>
         </li>
         <li class="nav-item">
-          <button class="nav-trigger" type="button" aria-expanded="false">Faculty &amp; Staff <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <button class="nav-trigger" type="button" aria-expanded="false">Faculty &amp; Staff <i
+              data-lucide="chevron-down" aria-hidden="true"></i></button>
           <div class="dropdown-menu">
             <a href="pages/faculty-staff.html#faculty-directory">Faculty Directory</a>
             <a href="pages/faculty-staff.html#staff-directory">Staff Directory</a>
@@ -149,7 +176,8 @@
           </div>
         </li>
         <li class="nav-item">
-          <button class="nav-trigger" type="button" aria-expanded="false">Campus &amp; Facilities <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <button class="nav-trigger" type="button" aria-expanded="false">Campus &amp; Facilities <i
+              data-lucide="chevron-down" aria-hidden="true"></i></button>
           <div class="dropdown-menu">
             <a href="pages/campus-facilities.html#infrastructure">Infrastructure</a>
             <a href="pages/campus-facilities.html#library">Library</a>
@@ -160,7 +188,8 @@
           </div>
         </li>
         <li class="nav-item">
-          <button class="nav-trigger" type="button" aria-expanded="false">Examination &amp; Results <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <button class="nav-trigger" type="button" aria-expanded="false">Examination &amp; Results <i
+              data-lucide="chevron-down" aria-hidden="true"></i></button>
           <div class="dropdown-menu">
             <a href="pages/examination-results.html#examination-notices">Examination Notices</a>
             <a href="pages/examination-results.html#exam-schedule">Exam Schedule</a>
@@ -170,7 +199,8 @@
           </div>
         </li>
         <li class="nav-item">
-          <button class="nav-trigger" type="button" aria-expanded="false">Downloads &amp; Documents <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <button class="nav-trigger" type="button" aria-expanded="false">Downloads &amp; Documents <i
+              data-lucide="chevron-down" aria-hidden="true"></i></button>
           <div class="dropdown-menu">
             <a href="pages/downloads-documents.html#forms">Forms</a>
             <a href="pages/downloads-documents.html#circulars">Circulars</a>
@@ -180,7 +210,8 @@
           </div>
         </li>
         <li class="nav-item">
-          <button class="nav-trigger" type="button" aria-expanded="false">Digital Services <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <button class="nav-trigger" type="button" aria-expanded="false">Digital Services <i data-lucide="chevron-down"
+              aria-hidden="true"></i></button>
           <div class="dropdown-menu">
             <a href="pages/digital-services.html#erp-login">ERP / Login</a>
             <a href="pages/digital-services.html#email-services">Email Services</a>
@@ -190,7 +221,8 @@
           </div>
         </li>
         <li class="nav-item">
-          <button class="nav-trigger" type="button" aria-expanded="false">Contact &amp; Directory <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <button class="nav-trigger" type="button" aria-expanded="false">Contact &amp; Directory <i
+              data-lucide="chevron-down" aria-hidden="true"></i></button>
           <div class="dropdown-menu">
             <a href="pages/contact-directory.html#contact-details">Contact Details</a>
             <a href="pages/contact-directory.html#department-directory">Department Directory</a>
@@ -208,7 +240,8 @@
       <div class="updates-marquee" aria-live="polite">
         <div class="updates-track">
           <a href="pages/downloads-documents.html#notices">Applications open for Scholarships 2026-27</a>
-          <a href="pages/research-innovation.html#research-centers">New Centre for Climate &amp; Sustainability launched</a>
+          <a href="pages/research-innovation.html#research-centers">New Centre for Climate &amp; Sustainability
+            launched</a>
           <a href="pages/about.html#reports-disclosures">CU South Bihar ranked among Top Emerging Universities</a>
           <a href="pages/admissions.html#admission-overview">International admissions desk now accepting queries</a>
         </div>
