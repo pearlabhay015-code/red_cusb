@@ -38,24 +38,22 @@
     if (document.querySelector(".quick-strip")) return;
 
     const html = await fetchComponent("quick-links");
-    const mount = document.querySelector('[data-component="quick-links"]');
+    let mount = document.querySelector('[data-component="quick-links"]');
+    if (!mount) {
+      const main = document.querySelector("#main-content");
+      const hero = main?.querySelector(".hero, .page-hero");
+      if (hero) {
+        mount = document.createElement("div");
+        mount.setAttribute("data-component", "quick-links");
+        hero.insertAdjacentElement("afterend", mount);
+      }
+    }
+
     if (mount) {
       mount.innerHTML = html;
       rewriteComponentLinks(mount);
       return;
     }
-
-    const main = document.querySelector("#main-content");
-    const hero = main?.querySelector(".hero, .page-hero");
-    if (!main || !hero) return;
-
-    const template = document.createElement("template");
-    template.innerHTML = html.trim();
-    const quickLinks = template.content.firstElementChild;
-    if (!quickLinks) return;
-
-    hero.insertAdjacentElement("afterend", quickLinks);
-    rewriteComponentLinks(quickLinks);
   }
 
   window.loadSharedComponents = async function loadSharedComponents() {

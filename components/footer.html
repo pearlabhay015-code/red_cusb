@@ -99,7 +99,7 @@
 
     <nav aria-label="Footer academics links">
       <h2>Academics</h2>
-      <a href="pages/academics.html#academic-structure">Schools &amp; Departments</a>
+      <a href="pages/academics.html#schools-departments">Schools &amp; Departments</a>
       <a href="pages/academics.html#programs">Programs</a>
       <a href="pages/academics.html#academic-resources">Academic Resources</a>
       <a href="pages/research-innovation.html#research-areas">Research Areas</a>
@@ -145,6 +145,37 @@
     </div>
   </div>
 </footer>
+<section class="chatbot-widget" data-chatbot aria-label="CUSB virtual assistant">
+  <div class="chatbot-panel" data-chatbot-panel hidden>
+    <div class="chatbot-header">
+      <span>
+        <strong>CUSB Assistant</strong>
+        <small>Quick help desk</small>
+      </span>
+      <button class="chatbot-icon-btn" type="button" data-chatbot-close aria-label="Close chat">
+        <i data-lucide="x" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="chatbot-messages" data-chatbot-messages aria-live="polite">
+      <div class="chatbot-message bot">Hello. I can help with admissions, hostels, results, downloads, contact details and campus facilities.</div>
+    </div>
+    <div class="chatbot-prompts" aria-label="Suggested questions">
+      <button type="button" data-chatbot-prompt="admission">Admissions</button>
+      <button type="button" data-chatbot-prompt="hostel">Hostels</button>
+      <button type="button" data-chatbot-prompt="result">Results</button>
+    </div>
+    <form class="chatbot-form" data-chatbot-form>
+      <label class="sr-only" for="chatbot-input">Ask the CUSB assistant</label>
+      <input id="chatbot-input" type="text" data-chatbot-input autocomplete="off" placeholder="Ask a question">
+      <button type="submit" aria-label="Send message">
+        <i data-lucide="send" aria-hidden="true"></i>
+      </button>
+    </form>
+  </div>
+  <button class="chatbot-toggle" type="button" data-chatbot-toggle aria-label="Open chat assistant" aria-expanded="false">
+    <i data-lucide="message-circle" aria-hidden="true"></i>
+  </button>
+</section>
 <button class="back-to-top" type="button" data-back-to-top aria-label="Scroll to top">
   <i data-lucide="arrow-up" aria-hidden="true"></i>
 </button>
