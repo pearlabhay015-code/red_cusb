@@ -225,11 +225,11 @@
         navigator.geolocation.getCurrentPosition(
           (position) => {
             const origin = `${position.coords.latitude},${position.coords.longitude}`;
-            window.location.href = directionsUrl(origin);
+            window.open(directionsUrl(origin), "_blank", "noopener,noreferrer");
           },
           () => {
             window.alert("Please turn on location access, or choose your starting location manually in Google Maps.");
-            window.location.href = fallbackUrl;
+            window.open(fallbackUrl, "_blank", "noopener,noreferrer");
           },
           {
             enableHighAccuracy: true,
