@@ -1,31 +1,28 @@
 <header class="site-header" role="banner">
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <section class="accessibility-bar" aria-label="Audience tools">
-    <div class="bar-inner">
-      <nav class="audience-links" aria-label="Audience links">
-        <a href="pages/students.html" aria-label="Students portal">Students</a>
-        <a href="pages/faculty-staff.html" aria-label="Faculty and staff portal">Faculty &amp; Staff</a>
-        <a href="pages/about.html#reports-disclosures" aria-label="Alumni information">Alumni</a>
-        <a href="pages/admissions.html#prospectus-faqs" aria-label="Parents information">Parents</a>
-      </nav>
-      <label class="language-select">
-        <span class="sr-only">Select language</span>
-        <i data-lucide="globe-2" aria-hidden="true"></i>
-        <select data-language-select aria-label="Language selector">
-          <option value="en">English</option>
-          <option value="hi">Hindi</option>
-          <option value="bn">Bengali</option>
-          <option value="gu">Gujarati</option>
-          <option value="kn">Kannada</option>
-          <option value="ml">Malayalam</option>
-          <option value="mr">Marathi</option>
-          <option value="pa">Punjabi</option>
-          <option value="ta">Tamil</option>
-          <option value="te">Telugu</option>
-          <option value="ur">Urdu</option>
-        </select>
-      </label>
+  <section class="updates-bar" aria-label="Latest updates">
+    <div class="container updates-inner">
+      <span>Updates</span>
+      <div class="updates-marquee" aria-live="polite">
+        <div class="updates-track">
+          <a href="pages/about.html#reports-disclosures">CUSB ranked among top central universities</a>
+          <a href="pages/research-innovation.html#research-centers">New Research Center inaugurated for AI and Data Science</a>
+          <a href="pages/research-innovation.html#collaborations">International conference on sustainable development 2026</a>
+          <a href="pages/examination-results.html#results">Results declared for even semester 2025-26</a>
+          <a href="pages/about.html#reports-disclosures">CUSB ranked among top central universities</a>
+          <a href="pages/research-innovation.html#research-centers">New Research Center inaugurated for AI and Data Science</a>
+          <a href="pages/research-innovation.html#collaborations">International conference on sustainable development 2026</a>
+          <a href="pages/examination-results.html#results">Results declared for even semester 2025-26</a>
+          <a href="pages/about.html#reports-disclosures">CUSB ranked among top central universities</a>
+          <a href="pages/research-innovation.html#research-centers">New Research Center inaugurated for AI and Data Science</a>
+          <a href="pages/research-innovation.html#collaborations">International conference on sustainable development 2026</a>
+          <a href="pages/examination-results.html#results">Results declared for even semester 2025-26</a>
+        </div>
+      </div>
+      <div class="updates-controls" aria-hidden="true">
+        <i data-lucide="chevron-left"></i><i data-lucide="chevron-right"></i>
+      </div>
     </div>
   </section>
 
@@ -63,53 +60,67 @@
     </div>
   </aside>
 
-  <section class="utility-header" aria-label="University identity and search">
+  <section class="utility-header" aria-label="University identity and quick links">
     <div class="container utility-grid">
       <a class="brand" href="index.html" aria-label="Central University of South Bihar home">
-        <img class="brand-logo" src="assets/images/culog.png" alt="Central University of South Bihar emblem" width="86"
-          height="86">
+        <img class="brand-logo" src="assets/images/culog.png" alt="Central University of South Bihar emblem" width="114"
+          height="114">
         <span>
-          <strong>Central University of<br>South Bihar</strong>
-          <small>ज्ञान सेवा विमुक्तये</small>
+          <strong>Central University<br>of South Bihar</strong>
         </span>
       </a>
+
+      <div class="header-actions" aria-label="Important links">
+        <a class="quiet-link" href="pages/admissions.html#application-process"><i data-lucide="send" aria-hidden="true"></i>Apply Now</a>
+        <a class="quiet-link" href="pages/examination-results.html#results"><i data-lucide="circle-check" aria-hidden="true"></i>Results</a>
+        <a class="quiet-link" href="pages/digital-services.html#online-fee-payment"><i data-lucide="credit-card" aria-hidden="true"></i>Pay Fees</a>
+        <a class="quiet-link" href="pages/digital-services.html#erp-login"><i data-lucide="user-round" aria-hidden="true"></i>ERP / Login</a>
+        <a class="quiet-link" href="pages/contact-directory.html#contact-details"><i data-lucide="phone" aria-hidden="true"></i>Contact Us</a>
+      </div>
+
+      <nav class="audience-links" aria-label="Audience links">
+        <a href="pages/students.html">Students</a>
+        <a href="pages/faculty-staff.html">Faculty &amp; Staff</a>
+        <a href="pages/about.html#reports-disclosures">Alumni</a>
+        <a href="pages/faculty-staff.html#recruitment-careers">Careers</a>
+      </nav>
+
       <form class="site-search" role="search" aria-label="Site search">
         <label class="sr-only" for="site-search-input">Search the university website</label>
         <i data-lucide="search" aria-hidden="true"></i>
-        <input id="site-search-input" type="search" placeholder="Search for courses, programs, people, news..."
-          autocomplete="off">
-        <button type="submit" aria-label="Submit search">Search <i data-lucide="search" aria-hidden="true"></i></button>
+        <input id="site-search-input" type="search" placeholder="Search" autocomplete="off">
+        <button type="submit" aria-label="Submit search"><i data-lucide="search" aria-hidden="true"></i></button>
       </form>
-      <div class="header-badges" aria-label="Institutional recognition and national mission">
-        <img src="assets/images/viksit.png" alt="Viksit Bharat Abhiyan 1947 to 2047" width="328" height="174">
-        <img src="assets/images/NAAC.png" alt="NAAC accredited with grade A plus plus" width="721" height="316">
-      </div>
-      <div class="header-actions">
-        <a class="btn primary" href="pages/admissions.html#application-process"
-          aria-label="Apply now for admission">Apply Now <i data-lucide="arrow-right" aria-hidden="true"></i></a>
-        <button class="menu-toggle" type="button" aria-label="Open main navigation" aria-expanded="false"
-          aria-controls="primary-navigation">
-          <i class="menu-toggle-icon menu-toggle-open" data-lucide="menu" aria-hidden="true"></i>
-          <i class="menu-toggle-icon menu-toggle-close" data-lucide="x" aria-hidden="true"></i>
-        </button>
-      </div>
+
+      <label class="language-select">
+        <span class="sr-only">Select language</span>
+        <i data-lucide="globe-2" aria-hidden="true"></i>
+        <select data-language-select aria-label="Language selector">
+          <option value="en">English</option>
+          <option value="hi">Hindi</option>
+          <option value="bn">Bengali</option>
+          <option value="gu">Gujarati</option>
+          <option value="kn">Kannada</option>
+          <option value="ml">Malayalam</option>
+          <option value="mr">Marathi</option>
+          <option value="pa">Punjabi</option>
+          <option value="ta">Tamil</option>
+          <option value="te">Telugu</option>
+          <option value="ur">Urdu</option>
+        </select>
+      </label>
+
+      <button class="menu-toggle" type="button" aria-label="Open main navigation" aria-expanded="false"
+        aria-controls="primary-navigation">
+        <i class="menu-toggle-icon menu-toggle-open" data-lucide="menu" aria-hidden="true"></i>
+        <i class="menu-toggle-icon menu-toggle-close" data-lucide="x" aria-hidden="true"></i>
+      </button>
     </div>
   </section>
 
   <nav id="primary-navigation" class="main-nav" aria-label="Main navigation">
     <div class="container nav-inner">
       <ul class="nav-list" role="list">
-        <li class="nav-item">
-          <button class="nav-trigger" type="button" aria-expanded="false">Home <i data-lucide="chevron-down"
-              aria-hidden="true"></i></button>
-          <div class="dropdown-menu">
-            <a href="index.html">Home Page</a>
-            <a href="index.html#news-title">Highlights</a>
-            <a href="index.html#quick-actions">Quick Actions</a>
-            <a href="index.html#programs-title">Featured Sections</a>
-            <a href="index.html#campus-map">Explore CUSB</a>
-          </div>
-        </li>
         <li class="nav-item">
           <button class="nav-trigger" type="button" aria-expanded="false">About <i data-lucide="chevron-down"
               aria-hidden="true"></i></button>
@@ -235,35 +246,7 @@
             <a href="pages/digital-services.html#other-online-services">Other Online Services</a>
           </div>
         </li>
-        <li class="nav-item">
-          <button class="nav-trigger" type="button" aria-expanded="false">Contact &amp; Directory <i
-              data-lucide="chevron-down" aria-hidden="true"></i></button>
-          <div class="dropdown-menu">
-            <a href="pages/contact-directory.html#contact-details">Contact Details</a>
-            <a href="pages/contact-directory.html#department-directory">Department Directory</a>
-            <a href="pages/contact-directory.html#location-map">Location Map</a>
-            <a href="pages/contact-directory.html#reach-us">Reach Us</a>
-          </div>
-        </li>
       </ul>
     </div>
   </nav>
-
-  <section class="updates-bar" aria-label="Latest updates">
-    <div class="container updates-inner">
-      <span>Latest Updates</span>
-      <div class="updates-marquee" aria-live="polite">
-        <div class="updates-track">
-          <a href="pages/downloads-documents.html#notices">Applications open for Scholarships 2026-27</a>
-          <a href="pages/research-innovation.html#research-centers">New Centre for Climate &amp; Sustainability
-            launched</a>
-          <a href="pages/about.html#reports-disclosures">CU South Bihar ranked among Top Emerging Universities</a>
-          <a href="pages/admissions.html#admission-overview">International admissions desk now accepting queries</a>
-        </div>
-      </div>
-      <div class="updates-controls" aria-hidden="true">
-        <i data-lucide="arrow-left"></i><i data-lucide="arrow-right"></i>
-      </div>
-    </div>
-  </section>
 </header>
