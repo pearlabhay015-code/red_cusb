@@ -27,37 +27,74 @@
   </section>
 
   <aside class="accessibility-widget" aria-label="Accessibility tools">
-    <button class="accessibility-toggle" type="button" data-accessibility-toggle aria-expanded="false"
-      aria-controls="accessibility-panel">
-      <i data-lucide="accessibility" aria-hidden="true"></i>
-      <span>Accessibility</span>
-    </button>
-    <div class="accessibility-panel" id="accessibility-panel" data-accessibility-panel hidden>
-      <div class="tool-group" aria-label="Font size controls">
-        <button class="tool-btn" type="button" data-font="decrease" aria-label="Decrease font size">A-</button>
-        <button class="tool-btn" type="button" data-font="reset" aria-label="Reset font size">A</button>
-        <button class="tool-btn" type="button" data-font="increase" aria-label="Increase font size">A+</button>
-      </div>
-      <button class="tool-btn icon-text" type="button" data-theme-toggle aria-label="Toggle light and dark theme">
-        <i data-lucide="sun" aria-hidden="true"></i><span>Light</span>
-      </button>
-      <div class="reader-controls" aria-label="Screen reader controls">
-        <button class="tool-btn icon-text" type="button" data-speech-start
-          aria-label="Start reading page content aloud">
-          <i data-lucide="volume-2" aria-hidden="true"></i><span>Start Reader</span>
-        </button>
-        <button class="tool-btn icon-text" type="button" data-speech-stop aria-label="Stop reading page content"
-          disabled>
-          <i data-lucide="volume-x" aria-hidden="true"></i><span>Stop Reader</span>
+    <div class="accessibility-panel" id="accessibility-panel" data-accessibility-panel hidden role="dialog" aria-modal="true" aria-labelledby="accessibility-title">
+      <div class="accessibility-panel-header">
+        <h2 id="accessibility-title" class="accessibility-panel-title">Accessibility</h2>
+        <button class="accessibility-panel-close" type="button" aria-label="Close accessibility panel">
+          <i data-lucide="x" aria-hidden="true"></i>
         </button>
       </div>
-      <button class="tool-btn icon-text" type="button" data-dyslexia-toggle aria-label="Toggle dyslexia friendly font">
-        <i data-lucide="headphones" aria-hidden="true"></i><span>Dyslexia Friendly</span>
-      </button>
-      <button class="tool-btn icon-text" type="button" data-keyboard-help aria-label="Show keyboard navigation help">
-        <i data-lucide="keyboard" aria-hidden="true"></i><span>Keyboard Navigation</span>
-      </button>
+      <div class="accessibility-panel-content">
+        <!-- Font Size Controls -->
+        <div class="accessibility-section">
+          <h3>Text Size</h3>
+          <div class="font-size-controls">
+            <button class="tool-btn font-btn" type="button" data-font="decrease" aria-label="Decrease font size">
+              <i data-lucide="minus" aria-hidden="true"></i>
+            </button>
+            <button class="tool-btn font-btn reset-btn" type="button" data-font="reset" aria-label="Reset font size to default">
+              <i data-lucide="rotate-ccw" aria-hidden="true"></i>
+            </button>
+            <button class="tool-btn font-btn" type="button" data-font="increase" aria-label="Increase font size">
+              <i data-lucide="plus" aria-hidden="true"></i>
+            </button>
+            <span class="font-size-display" data-font-display>100%</span>
+          </div>
+        </div>
+
+        <!-- Theme Toggle -->
+        <div class="accessibility-section">
+          <h3>Theme</h3>
+          <button class="tool-btn icon-text theme-toggle-btn" type="button" data-theme-toggle aria-label="Toggle light and dark theme">
+            <i data-lucide="sun" aria-hidden="true"></i><span>Light Mode</span>
+          </button>
+        </div>
+
+        <!-- Screen Reader -->
+        <div class="accessibility-section">
+          <h3>Text to Speech</h3>
+          <div class="reader-controls">
+            <button class="tool-btn icon-text" type="button" data-speech-start
+              aria-label="Start reading page content aloud">
+              <i data-lucide="volume-2" aria-hidden="true"></i><span>Start Reader</span>
+            </button>
+            <button class="tool-btn icon-text" type="button" data-speech-stop aria-label="Stop reading page content"
+              disabled>
+              <i data-lucide="volume-x" aria-hidden="true"></i><span>Stop Reader</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dyslexia Mode -->
+        <div class="accessibility-section">
+          <button class="tool-btn icon-text" type="button" data-dyslexia-toggle aria-label="Toggle dyslexia friendly font">
+            <i data-lucide="book-open" aria-hidden="true"></i><span>Dyslexia Friendly Font</span>
+          </button>
+        </div>
+
+        <!-- Keyboard Navigation -->
+        <div class="accessibility-section">
+          <button class="tool-btn icon-text" type="button" data-keyboard-help aria-label="Show keyboard navigation help">
+            <i data-lucide="keyboard" aria-hidden="true"></i><span>Keyboard Navigation Help</span>
+          </button>
+        </div>
+      </div>
     </div>
+    
+    <button class="accessibility-toggle" type="button" data-accessibility-toggle aria-expanded="false"
+      aria-controls="accessibility-panel" aria-label="Accessibility options">
+      <i data-lucide="accessibility" aria-hidden="true"></i>
+    </button>
   </aside>
 
   <section class="utility-header" aria-label="University identity and quick links">
@@ -78,23 +115,17 @@
         <a class="quiet-link" href="pages/contact-directory.html#contact-details"><i data-lucide="phone" aria-hidden="true"></i>Contact Us</a>
       </div>
 
-      <nav class="audience-links" aria-label="Audience links">
-        <a href="pages/students.html">Students</a>
-        <a href="pages/faculty-staff.html">Faculty &amp; Staff</a>
-        <a href="pages/about.html#reports-disclosures">Alumni</a>
-        <a href="pages/faculty-staff.html#recruitment-careers">Careers</a>
-      </nav>
+
 
       <form class="site-search" role="search" aria-label="Site search">
         <label class="sr-only" for="site-search-input">Search the university website</label>
         <i data-lucide="search" aria-hidden="true"></i>
         <input id="site-search-input" type="search" placeholder="Search" autocomplete="off">
-        <button type="submit" aria-label="Submit search"><i data-lucide="search" aria-hidden="true"></i></button>
       </form>
 
       <label class="language-select">
         <span class="sr-only">Select language</span>
-        <i data-lucide="globe-2" aria-hidden="true"></i>
+        <i data-lucide="languages" aria-hidden="true"></i>
         <select data-language-select aria-label="Language selector">
           <option value="en">English</option>
           <option value="hi">Hindi</option>

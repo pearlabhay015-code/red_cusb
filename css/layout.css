@@ -1331,12 +1331,14 @@
 
 @media (max-width: 1100px) {
   .utility-grid {
-    grid-template-columns: 1fr auto auto;
+    grid-template-columns: minmax(380px, 1fr) auto;
     grid-template-areas:
-      "brand search menu"
-      "actions actions actions"
-      "audience language language";
+      "search language"
+      "brand menu"
+      "actions actions"
+      "audience audience";
     min-height: 0;
+    gap: 14px 16px;
   }
 
   .brand {
@@ -1346,13 +1348,67 @@
   .header-actions,
   .audience-links {
     justify-content: flex-start;
+    margin-top: 4px;
   }
 
   .menu-toggle {
+    justify-self: end;
     display: grid;
     width: 44px;
     height: 44px;
     border-color: var(--border);
+  }
+
+  .site-search {
+    width: 100%;
+    min-width: 380px;
+    height: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding-inline: 12px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: #fff;
+  }
+
+  .site-search>svg {
+    flex: 0 0 auto;
+  }
+
+  .site-search input {
+    flex: 0 1 160px;
+    min-width: 90px;
+    width: auto;
+    text-align: center;
+    opacity: 1;
+    pointer-events: auto;
+    padding: 0;
+  }
+
+  .site-search input::placeholder {
+    text-align: center;
+  }
+
+  .site-search button {
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    grid-column: auto;
+    min-height: 0;
+    display: inline-flex;
+    justify-content: center;
+  }
+
+  .language-select {
+    justify-self: end;
+    min-height: 44px;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: #fff;
   }
 
   .main-nav {
@@ -1391,13 +1447,13 @@
   }
 
   .utility-grid {
-    grid-template-columns: auto minmax(120px, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr) auto;
     grid-template-areas:
-      "brand search menu"
-      "actions actions actions"
-      "audience audience audience"
-      "language language language";
-    gap: 12px;
+      "search language"
+      "brand menu"
+      "actions actions"
+      "audience audience";
+    gap: 14px 12px;
     padding-block: 12px 14px;
   }
 
@@ -1420,9 +1476,10 @@
 
   .header-actions,
   .audience-links {
-    gap: 10px;
+    gap: 10px 12px;
     overflow: visible;
     padding-bottom: 0;
+    margin-top: 2px;
   }
 
   .header-actions {
@@ -1449,9 +1506,9 @@
 
   .site-search {
     width: 100%;
+    min-width: min(380px, calc(100vw - 116px));
     height: 42px;
     min-height: 42px;
-    grid-template-columns: 38px minmax(0, 1fr) 42px;
     border: 1px solid var(--border);
     border-radius: 999px;
     background: #fff;
@@ -1460,7 +1517,8 @@
   .site-search input {
     opacity: 1;
     pointer-events: auto;
-    padding: 0 8px 0 0;
+    padding: 0;
+    text-align: center;
   }
 
   .site-search:focus-within {
@@ -1473,8 +1531,8 @@
   }
 
   .language-select {
-    justify-self: start;
-    min-height: 36px;
+    justify-self: end;
+    min-height: 42px;
     max-width: 100%;
     padding: 6px 10px;
     border: 1px solid var(--border);
@@ -1527,7 +1585,7 @@
 
 @media (max-width: 480px) {
   .utility-grid {
-    grid-template-columns: 98px minmax(0, 1fr) 44px;
+    grid-template-columns: minmax(0, 1fr) auto;
   }
 
   .brand {
@@ -1545,10 +1603,313 @@
   }
 
   .site-search {
-    grid-template-columns: 34px minmax(0, 1fr) 38px;
+    min-width: min(380px, calc(100vw - 112px));
   }
 
   .site-search button {
     width: 38px;
+  }
+}
+
+/* Compact header requested for phone and tablet views. */
+.site-search {
+  width: 300px;
+  min-width: 300px;
+  height: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: none;
+}
+
+.site-search:focus-within {
+  width: 300px;
+  border-color: var(--brand);
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 8px 18px rgba(0, 47, 104, .1);
+}
+
+.site-search>svg {
+  flex: 0 0 18px;
+}
+
+.site-search input {
+  flex: 0 0 68px;
+  width: 68px;
+  min-width: 0;
+  padding: 0;
+  opacity: 1;
+  pointer-events: auto;
+  text-align: left;
+}
+
+.site-search:focus-within input {
+  flex: 0 1 180px;
+  width: auto;
+}
+
+.site-search button {
+  width: 42px;
+  height: 42px;
+  min-height: 0;
+  padding: 0;
+  display: inline-flex;
+  justify-content: center;
+  background: transparent;
+  color: var(--brand);
+}
+
+.site-search-results {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 18px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-soft);
+}
+
+.site-search-results span {
+  color: var(--muted);
+  font-size: .92rem;
+}
+
+@media (max-width: 1100px) {
+  .utility-grid {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "brand menu"
+      "search language";
+    position: relative;
+    min-height: 0;
+    gap: 12px 10px;
+    padding-block: 12px;
+    padding-right: 56px;
+  }
+
+  .brand {
+    width: auto;
+    min-width: 0;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .brand span {
+    display: inline;
+  }
+
+  .brand-logo {
+    width: 72px;
+    height: 72px;
+  }
+
+  .brand strong {
+    max-width: 160px;
+    font-size: .95rem;
+    line-height: 1.08;
+    overflow-wrap: anywhere;
+  }
+
+  .menu-toggle {
+    display: grid;
+    justify-self: end;
+    position: static;
+    z-index: 1020;
+    width: 44px;
+    height: 44px;
+  }
+
+  .menu-toggle.is-open {
+    position: fixed;
+    top: 12px;
+    right: 16px;
+  }
+
+  .header-actions,
+  .audience-links {
+    display: none;
+  }
+
+  .site-search {
+    grid-area: search;
+    justify-self: start;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .site-search:focus-within {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .language-select {
+    grid-area: language;
+    position: relative;
+    z-index: 1019;
+    width: 44px;
+    max-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+    padding-inline: 0;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: #fff;
+    overflow: hidden;
+  }
+
+  .language-select select {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    opacity: 0;
+  }
+
+  .main-nav {
+    position: fixed;
+    inset: 0 0 0 auto;
+    z-index: 1010;
+    width: min(86vw, 380px);
+    display: block;
+    border-left: 1px solid var(--border);
+    box-shadow: -18px 0 40px rgba(10, 8, 10, .18);
+    transform: translateX(105%);
+    transition: transform .25s ease;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .main-nav.is-open {
+    transform: translateX(0);
+  }
+
+  .nav-inner {
+    width: 100%;
+    max-width: 100%;
+    min-height: 100dvh;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 72px 24px 24px;
+    overflow-y: auto;
+  }
+
+  .nav-list {
+    width: 100%;
+    display: grid;
+    justify-content: stretch;
+    gap: 4px;
+    padding: 0;
+  }
+
+  .nav-item {
+    position: static;
+    min-width: 0;
+  }
+
+  .nav-trigger {
+    width: 100%;
+    min-height: 50px;
+    justify-content: space-between;
+    padding: 0;
+    border-bottom: 1px solid var(--border);
+    white-space: normal;
+    text-align: left;
+    font-size: .78rem;
+  }
+
+  .dropdown-menu {
+    position: static;
+    width: 100%;
+    transform: none;
+    padding: 6px 0 10px 14px;
+    border: 0;
+    border-bottom: 1px solid var(--border);
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .utility-grid {
+    grid-template-columns: minmax(0, 1fr) auto;
+    overflow-x: clip;
+  }
+
+  .language-select {
+    width: 52px;
+    max-width: 52px;
+    justify-content: center;
+    padding-inline: 8px;
+  }
+
+  .language-select select {
+    width: 22px;
+    min-width: 22px;
+    color: transparent;
+  }
+}
+
+@media (max-width: 640px) {
+  .utility-grid {
+    position: relative;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "brand"
+      "search";
+    align-items: center;
+    padding-right: 104px;
+  }
+
+  .brand {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .utility-grid>.menu-toggle {
+    position: absolute !important;
+    top: 26px !important;
+    right: 0 !important;
+  }
+
+  .site-search,
+  .site-search:focus-within {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .utility-grid>.language-select {
+    position: absolute !important;
+    top: 26px !important;
+    right: 52px !important;
+    width: 44px;
+    max-width: 44px;
+    min-height: 42px;
+    justify-content: center;
+    padding-inline: 0;
+    overflow: hidden;
+  }
+
+  .language-select svg {
+    flex: 0 0 auto;
+  }
+
+  .language-select select {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    opacity: 0;
   }
 }

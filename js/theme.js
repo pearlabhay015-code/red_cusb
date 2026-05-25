@@ -7,7 +7,7 @@
       const isDark = theme === "dark";
       button.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
       const label = button.querySelector("span");
-      if (label) label.textContent = isDark ? "Dark" : "Light";
+      if (label) label.textContent = isDark ? "Dark Mode" : "Light Mode";
       const icon = button.querySelector("i");
       if (icon) icon.setAttribute("data-lucide", isDark ? "moon" : "sun");
     });

@@ -176,6 +176,16 @@
       setOpen(false);
     });
 
+    document.addEventListener("pointerdown", (event) => {
+      if (!nav.classList.contains("is-open")) return;
+      if (nav.contains(event.target) || toggle.contains(event.target)) return;
+      setOpen(false);
+    }, { capture: true });
+
+    nav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => setOpen(false));
+    });
+
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && nav.classList.contains("is-open")) {
         setOpen(false);
@@ -608,10 +618,39 @@
     search.addEventListener("submit", (event) => {
       event.preventDefault();
       const input = search.querySelector("input");
-      if (input?.value.trim()) {
-        window.alert(`Search is ready for backend integration: ${input.value.trim()}`);
-      }
+      const query = input?.value.trim();
+      if (!query) return;
+
+      const isNestedPage = window.location.pathname.includes("/pages/");
+      const target = isNestedPage ? "sitemap.html" : "pages/sitemap.html";
+      window.location.href = `${target}?q=${encodeURIComponent(query)}`;
     });
+  }
+
+  function initSitemapSearch() {
+    const page = document.querySelector("[data-page='sitemap']");
+    if (!page) return;
+
+    const query = new URLSearchParams(window.location.search).get("q")?.trim();
+    if (!query) return;
+
+    const normalizedQuery = query.toLowerCase();
+    const cards = [...document.querySelectorAll(".sitemap-card, .service-list a")];
+    let matches = 0;
+
+    cards.forEach((item) => {
+      const isMatch = item.textContent.toLowerCase().includes(normalizedQuery);
+      item.hidden = !isMatch;
+      if (isMatch) matches += 1;
+    });
+
+    const searchSummary = document.createElement("div");
+    searchSummary.className = "site-search-results";
+    searchSummary.setAttribute("role", "status");
+    searchSummary.innerHTML = `<strong>Search results for "${query}"</strong><span>${matches} matching section${matches === 1 ? "" : "s"} found.</span>`;
+
+    const firstSection = document.querySelector(".sitemap-grid")?.closest(".page-section");
+    firstSection?.insertAdjacentElement("afterbegin", searchSummary);
   }
 
   function initAccessibilityTooltips() {
@@ -760,6 +799,7 @@
     initAcademicsDirectory();
     initDepartmentPage();
     initSearch();
+    initSitemapSearch();
     initAccessibilityTooltips();
   }
 

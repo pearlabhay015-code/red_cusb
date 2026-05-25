@@ -1,15 +1,18 @@
 body.theme-dark {
-  /* Theme overrides are intentionally isolated from layout and component rules. */
-  --bg: #11121a;
-  --surface: #191b26;
-  --surface-soft: #242634;
-  --ink: #f6f4f4;
-  --muted: #c8c0c6;
-  --border: #333647;
-  --brand: #d157ff;
-  --brand-dark: #b530e4;
-  --section-shadow: 0 18px 50px rgba(0, 0, 0, .25);
-  --shadow: 0 18px 50px rgba(0, 0, 0, .25);
+  /* Purple and black premium dark theme */
+  --bg: #0f0a15;
+  --surface: #1a1625;
+  --surface-soft: #2d2439;
+  --ink: #f5f0ff;
+  --muted: #a89bb8;
+  --border: #3d3450;
+  --brand: #b366ff;
+  --brand-dark: #9944dd;
+  --brand-soft: #2d1f45;
+  --blue: #7d5aff;
+  --navy: #5b9eff;
+  --section-shadow: 0 18px 50px rgba(0, 0, 0, .35);
+  --shadow: 0 18px 50px rgba(0, 0, 0, .35);
   background: var(--bg);
 }
 
@@ -268,6 +271,106 @@ body.theme-dark .hero-overlay {
 
 body.theme-dark .hero h1,
 body.theme-dark .hero p { color: #fff; }
+
+/* Accessibility panel dark theme styles */
+body.theme-dark .accessibility-toggle {
+  border-color: var(--brand);
+  background: linear-gradient(135deg, var(--brand), var(--blue));
+}
+
+body.theme-dark .accessibility-toggle:hover,
+body.theme-dark .accessibility-toggle:focus-visible {
+  box-shadow: 0 12px 32px rgba(179, 102, 255, .42);
+}
+
+body.theme-dark .accessibility-panel-header {
+  background: var(--surface);
+  border-bottom-color: var(--border);
+}
+
+body.theme-dark .accessibility-panel-title {
+  color: var(--ink);
+}
+
+body.theme-dark .accessibility-panel-close {
+  border-color: var(--border);
+  background: var(--surface-soft);
+  color: var(--ink);
+}
+
+body.theme-dark .accessibility-panel-close:hover,
+body.theme-dark .accessibility-panel-close:focus-visible {
+  background: var(--border);
+}
+
+body.theme-dark .accessibility-panel-content {
+  background: var(--surface);
+}
+
+body.theme-dark .accessibility-section {
+  border-bottom-color: var(--border);
+}
+
+body.theme-dark .accessibility-section h3 {
+  color: var(--ink);
+}
+
+body.theme-dark .accessibility-section {
+  background: rgba(179, 102, 255, .08);
+}
+
+body.theme-dark .accessibility-section:nth-child(2) {
+  background: rgba(195, 80, 140, .08);
+}
+
+body.theme-dark .accessibility-section:nth-child(3) {
+  background: rgba(20, 184, 166, .08);
+}
+
+body.theme-dark .accessibility-section:nth-child(4) {
+  background: rgba(251, 191, 36, .08);
+}
+
+body.theme-dark .accessibility-section:nth-child(5) {
+  background: rgba(168, 85, 247, .08);
+}
+
+body.theme-dark .font-btn,
+body.theme-dark .accessibility-panel .tool-btn {
+  border-color: var(--border);
+  background: var(--surface-soft);
+  color: var(--ink);
+}
+
+body.theme-dark .font-btn:hover:not(:disabled),
+body.theme-dark .font-btn:focus-visible,
+body.theme-dark .accessibility-panel .tool-btn:hover:not(:disabled),
+body.theme-dark .accessibility-panel .tool-btn:focus-visible {
+  border-color: var(--brand);
+  background: var(--brand-soft);
+  color: var(--brand);
+}
+
+body.theme-dark .font-size-display {
+  color: var(--muted);
+}
+
+/* Dark mode overrides for navy blue elements */
+body.theme-dark .updates-bar {
+  background: #5b9eff;
+}
+
+body.theme-dark .updates-inner > span {
+  background: #7dd3fc;
+}
+
+body.theme-dark .spotlight-news {
+  background: #5b9eff;
+}
+
+body.theme-dark .footer-bottom {
+  background: #5b9eff;
+}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

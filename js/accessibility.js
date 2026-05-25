@@ -10,9 +10,21 @@
   let translateLoaded = false;
 
   function setFontScale(scale) {
-    const nextScale = Math.min(1.2, Math.max(.9, scale));
+    // Font size range: 16px (scale 1.0) to 50px (scale 3.125)
+    // 16px base = 100%, 50px = 312.5%
+    const minScale = 1;
+    const maxScale = 3.125;
+    const nextScale = Math.min(maxScale, Math.max(minScale, scale));
+    const percentage = Math.round((nextScale - 1) * 100 + 100);
+    
     document.documentElement.style.setProperty("--font-scale", String(nextScale));
     localStorage.setItem(fontStorageKey, String(nextScale));
+    
+    // Update font size display
+    const display = document.querySelector("[data-font-display]");
+    if (display) {
+      display.textContent = `${percentage}%`;
+    }
   }
 
   function pageText() {
@@ -69,24 +81,41 @@
     const widget = document.querySelector(".accessibility-widget");
     const toggle = document.querySelector("[data-accessibility-toggle]");
     const panel = document.querySelector("[data-accessibility-panel]");
+    const closeButton = document.querySelector(".accessibility-panel-close");
     if (!widget || !toggle || !panel) return;
 
     function setOpen(isOpen) {
-      panel.hidden = !isOpen;
-      widget.classList.toggle("is-open", isOpen);
-      toggle.setAttribute("aria-expanded", String(isOpen));
+      if (isOpen) {
+        panel.hidden = false;
+        toggle.setAttribute("aria-expanded", "true");
+        closeButton?.focus();
+      } else {
+        panel.hidden = true;
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.focus();
+      }
     }
 
     toggle.addEventListener("click", () => {
       setOpen(panel.hidden);
     });
 
-    document.addEventListener("click", (event) => {
-      if (!widget.contains(event.target)) setOpen(false);
+    closeButton?.addEventListener("click", () => {
+      setOpen(false);
     });
 
+    // Close when clicking outside the widget
+    document.addEventListener("click", (event) => {
+      if (!widget.contains(event.target)) {
+        setOpen(false);
+      }
+    });
+
+    // Close on Escape key
     document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key === "Escape" && !panel.hidden) {
+        setOpen(false);
+      }
     });
   }
 
@@ -187,8 +216,9 @@
       button.addEventListener("click", () => {
         const current = Number(getComputedStyle(document.documentElement).getPropertyValue("--font-scale")) || 1;
         const action = button.dataset.font;
-        if (action === "increase") setFontScale(current + .05);
-        if (action === "decrease") setFontScale(current - .05);
+        const increment = 0.125; // Step from 16px to 50px
+        if (action === "increase") setFontScale(current + increment);
+        if (action === "decrease") setFontScale(current - increment);
         if (action === "reset") setFontScale(1);
       });
     });
