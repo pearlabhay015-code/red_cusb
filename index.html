@@ -165,14 +165,14 @@
           <p><i data-lucide="clock" aria-hidden="true"></i> 03:00 PM - 05:00 PM</p>
           <a href="pages/research-innovation.html#research-areas">Seminar Hall 2 <i data-lucide="arrow-right" aria-hidden="true"></i></a>
         </article>
-        <aside class="calendar-card panel">
+        <aside class="calendar-card panel" data-event-calendar>
           <h3><i data-lucide="calendar-days" aria-hidden="true"></i> Event Calendar</h3>
           <div class="calendar-month">
-            <button type="button" aria-label="Previous month"><i data-lucide="chevron-left" aria-hidden="true"></i></button>
-            <strong>May 2026</strong>
-            <button type="button" aria-label="Next month"><i data-lucide="chevron-right" aria-hidden="true"></i></button>
+            <button type="button" aria-label="Previous month" data-calendar-prev><i data-lucide="chevron-left" aria-hidden="true"></i></button>
+            <strong data-calendar-title>May 2026</strong>
+            <button type="button" aria-label="Next month" data-calendar-next><i data-lucide="chevron-right" aria-hidden="true"></i></button>
           </div>
-          <div class="calendar-grid" aria-label="May 2026 calendar">
+          <div class="calendar-grid" aria-label="May 2026 calendar" data-calendar-grid>
             <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
             <small>26</small><small>27</small><small>28</small><small>29</small><small>30</small><small>1</small><small>2</small>
             <small>3</small><small>4</small><small>5</small><small>6</small><small>7</small><small>8</small><small>9</small>
@@ -181,6 +181,48 @@
             <small class="is-event">24</small><small>25</small><small>26</small><small>27</small><small>28</small><small>29</small><small class="is-event">30</small>
           </div>
         </aside>
+      </div>
+    </section>
+
+    <section class="container home-section collage-gallery-section" aria-labelledby="gallery-title">
+      <div class="home-section-head">
+        <h2 id="gallery-title">Campus Gallery</h2>
+        <p>Explore campus spaces, academic life, student activities and memorable university moments.</p>
+      </div>
+
+      <div class="gallery-collage" aria-label="Campus gallery collage">
+        <a class="collage-tile tile-large" href="pages/gallery-detail.html?id=campus-aerial">
+          <img src="./assets/drone.png" alt="Aerial view of Central University of South Bihar campus" loading="lazy">
+          <span><small>Campus Landscape</small><strong>Campus Aerial View</strong><em>View details</em></span>
+        </a>
+        <a class="collage-tile tile-tall" href="pages/gallery-detail.html?id=aryabhatta-block">
+          <img src="./assets/aryabhatta.jpeg" alt="Aryabhatta academic block at Central University of South Bihar" loading="lazy">
+          <span><small>Academic Spaces</small><strong>Aryabhatta Academic Block</strong><em>View details</em></span>
+        </a>
+        <a class="collage-tile" href="pages/gallery-detail.html?id=central-library">
+          <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=900&q=75" alt="Library reading room with bookshelves" loading="lazy">
+          <span><small>Academic Resources</small><strong>Central Library</strong><em>View details</em></span>
+        </a>
+        <a class="collage-tile tile-wide" href="pages/gallery-detail.html?id=sports-ground">
+          <img src="./assets/sports.jpeg" alt="Students participating in sports activities" loading="lazy">
+          <span><small>Student Wellness</small><strong>Sports Ground</strong><em>View details</em></span>
+        </a>
+        <a class="collage-tile" href="pages/gallery-detail.html?id=research-labs">
+          <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=75" alt="Students working in a laboratory" loading="lazy">
+          <span><small>Research &amp; Innovation</small><strong>Research Labs</strong><em>View details</em></span>
+        </a>
+        <a class="collage-tile tile-tall" href="pages/gallery-detail.html?id=malviya-hostel">
+          <img src="./assets/malviya.jpeg" alt="Malviya hostel building on campus" loading="lazy">
+          <span><small>Residential Life</small><strong>Malviya Hostel</strong><em>View details</em></span>
+        </a>
+        <a class="collage-tile tile-wide" href="pages/gallery-detail.html?id=student-workshop">
+          <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=75" alt="Students attending an academic workshop" loading="lazy">
+          <span><small>Learning Events</small><strong>Student Workshop</strong><em>View details</em></span>
+        </a>
+        <a class="collage-tile" href="pages/gallery-detail.html?id=campus-life">
+          <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=900&q=75" alt="Students gathered on a university campus" loading="lazy">
+          <span><small>Community</small><strong>Campus Life</strong><em>View details</em></span>
+        </a>
       </div>
     </section>
 

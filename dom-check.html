@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en" style="--font-scale: 1; --translate-banner-offset: 8px;"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Central University of South Bihar official website prototype.">
+  <title>Central University of South Bihar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Playfair+Display:wght@700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/themes.css">
+</head>
+<body data-page="home">
+  <div data-component="header"><header class="site-header" role="banner">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <section class="updates-bar" aria-label="Latest updates">
+    <div class="container updates-inner">
+      <span>Updates</span>
+      <div class="updates-marquee" aria-live="polite">
+        <div class="updates-track">
+          <a href="pages/about.html#reports-disclosures">CUSB ranked among top central universities</a>
+          <a href="pages/research-innovation.html#research-centers">New Research Center inaugurated for AI and Data Science</a>
+          <a href="pages/research-innovation.html#collaborations">International conference on sustainable development 2026</a>
+          <a href="pages/examination-results.html#results">Results declared for even semester 2025-26</a>
+          <a href="pages/about.html#reports-disclosures">CUSB ranked among top central universities</a>
+          <a href="pages/research-innovation.html#research-centers">New Research Center inaugurated for AI and Data Science</a>
+          <a href="pages/research-innovation.html#collaborations">International conference on sustainable development 2026</a>
+          <a href="pages/examination-results.html#results">Results declared for even semester 2025-26</a>
+          <a href="pages/about.html#reports-disclosures">CUSB ranked among top central universities</a>
+          <a href="pages/research-innovation.html#research-centers">New Research Center inaugurated for AI and Data Science</a>
+          <a href="pages/research-innovation.html#collaborations">International conference on sustainable development 2026</a>
+          <a href="pages/examination-results.html#results">Results declared for even semester 2025-26</a>
+        </div>
+      </div>
+      <div class="updates-controls" aria-hidden="true">
+        <i data-lucide="chevron-left"></i><i data-lucide="chevron-right"></i>
+      </div>
+    </div>
+  </section>
+
+  <aside class="accessibility-widget" aria-label="Accessibility tools">
+    <div class="accessibility-panel" id="accessibility-panel" data-accessibility-panel="" hidden="" role="dialog" aria-modal="true" aria-labelledby="accessibility-title">
+      <div class="accessibility-panel-header">
+        <h2 id="accessibility-title" class="accessibility-panel-title">Accessibility</h2>
+        <button class="accessibility-panel-close" type="button" aria-label="Close accessibility panel">
+          <i data-lucide="x" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="accessibility-panel-content">
+        <!-- Font Size Controls -->
+        <div class="accessibility-section">
+          <h3>Text Size</h3>
+          <div class="font-size-controls">
+            <button class="tool-btn font-btn" type="button" data-font="decrease" aria-label="Decrease font size">
+              <i data-lucide="minus" aria-hidden="true"></i>
+            </button>
+            <button class="tool-btn font-btn reset-btn" type="button" data-font="reset" aria-label="Reset font size to default">
+              <i data-lucide="rotate-ccw" aria-hidden="true"></i>
+            </button>
+            <button class="tool-btn font-btn" type="button" data-font="increase" aria-label="Increase font size">
+              <i data-lucide="plus" aria-hidden="true"></i>
+            </button>
+            <span class="font-size-display" data-font-display="">100%</span>
+          </div>
+        </div>
+
+        <!-- Theme Toggle -->
+        <div class="accessibility-section">
+          <h3>Theme</h3>
+          <button class="tool-btn icon-text theme-toggle-btn" type="button" data-theme-toggle="" aria-label="Switch to dark theme">
+            <i data-lucide="sun" aria-hidden="true"></i><span>Light Mode</span>
+          </button>
+        </div>
+
+        <!-- Screen Reader -->
+        <div class="accessibility-section">
+          <h3>Text to Speech</h3>
+          <div class="reader-controls">
+            <button class="tool-btn icon-text" type="button" data-speech-start="" aria-label="Start reading page content aloud" aria-pressed="false">
+              <i data-lucide="volume-2" aria-hidden="true"></i><span>Start Reader</span>
+            </button>
+            <button class="tool-btn icon-text" type="button" data-speech-stop="" aria-label="Stop reading page content" disabled="">
+              <i data-lucide="volume-x" aria-hidden="true"></i><span>Stop Reader</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dyslexia Mode -->
+        <div class="accessibility-section">
+          <button class="tool-btn icon-text" type="button" data-dyslexia-toggle="" aria-label="Toggle dyslexia friendly font" aria-pressed="false">
+            <i data-lucide="book-open" aria-hidden="true"></i><span>Dyslexia Friendly Font</span>
+          </button>
+        </div>
+
+        <!-- Keyboard Navigation -->
+        <div class="accessibility-section">
+          <button class="tool-btn icon-text" type="button" data-keyboard-help="" aria-label="Show keyboard navigation help">
+            <i data-lucide="keyboard" aria-hidden="true"></i><span>Keyboard Navigation Help</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <button class="accessibility-toggle" type="button" data-accessibility-toggle="" aria-expanded="false" aria-controls="accessibility-panel" aria-label="Accessibility options">
+      <i data-lucide="accessibility" aria-hidden="true"></i>
+    </button>
+  </aside>
+
+  <section class="utility-header" aria-label="University identity and quick links">
+    <div class="container utility-grid">
+      <a class="brand" href="index.html" aria-label="Central University of South Bihar home">
+        <img class="brand-logo" src="assets/images/culog.png" alt="Central University of South Bihar emblem" width="114" height="114">
+        <span>
+          <strong>Central University<br>of South Bihar</strong>
+        </span>
+      </a>
+
+      <div class="header-actions" aria-label="Important links">
+        <a class="quiet-link" href="pages/admissions.html#application-process"><i data-lucide="send" aria-hidden="true"></i>Apply Now</a>
+        <a class="quiet-link" href="pages/examination-results.html#results"><i data-lucide="circle-check" aria-hidden="true"></i>Results</a>
+        <a class="quiet-link" href="pages/digital-services.html#online-fee-payment"><i data-lucide="credit-card" aria-hidden="true"></i>Pay Fees</a>
+        <a class="quiet-link" href="pages/digital-services.html#erp-login"><i data-lucide="user-round" aria-hidden="true"></i>ERP / Login</a>
+        <a class="quiet-link" href="pages/contact-directory.html#contact-details"><i data-lucide="phone" aria-hidden="true"></i>Contact Us</a>
+      </div>
+
+
+
+      <form class="site-search" role="search" aria-label="Site search">
+        <label class="sr-only" for="site-search-input">Search the university website</label>
+        <i data-lucide="search" aria-hidden="true"></i>
+        <input id="site-search-input" type="search" placeholder="Search" autocomplete="off">
+      </form>
+
+      <label class="language-select">
+        <span class="sr-only">Select language</span>
+        <i data-lucide="languages" aria-hidden="true"></i>
+        <select data-language-select="" aria-label="Language selector">
+          <option value="en">English</option>
+          <option value="hi">Hindi</option>
+          <option value="bn">Bengali</option>
+          <option value="gu">Gujarati</option>
+          <option value="kn">Kannada</option>
+          <option value="ml">Malayalam</option>
+          <option value="mr">Marathi</option>
+          <option value="pa">Punjabi</option>
+          <option value="ta">Tamil</option>
+          <option value="te">Telugu</option>
+          <option value="ur">Urdu</option>
+        </select>
+      </label>
+
+      <button class="menu-toggle" type="button" aria-label="Open main navigation" aria-expanded="false" aria-controls="primary-navigation">
+        <i class="menu-toggle-icon menu-toggle-open" data-lucide="menu" aria-hidden="true"></i>
+        <i class="menu-toggle-icon menu-toggle-close" data-lucide="x" aria-hidden="true"></i>
+      </button>
+    </div>
+  </section>
+
+  <nav id="primary-navigation" class="main-nav" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <ul class="nav-list" role="list">
+        <li class="nav-item">
+          <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true">About <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <div class="dropdown-menu">
+            <a href="pages/about.html#overview">Overview</a>
+            <a href="pages/about.html#vision-mission">Vision &amp; Mission</a>
+            <a href="pages/about.html#leadership">Leadership</a>
+            <a href="pages/about.html#governance">Governance</a>
+            <a href="pages/about.html#reports-disclosures">Reports &amp; Disclosures</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true">Academics <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <div class="dropdown-menu">
+            <a href="pages/academics.html#schools-departments">Schools &amp; Departments</a>
+            <a href="pages/academics.html#programs">Programs</a>
+            <a href="pages/academics.html#academic-resources">Academic Resources</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true">Admissions <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <div class="dropdown-menu">
+            <a href="pages/admissions.html#admission-overview">Admission Overview</a>
+            <a href="pages/admissions.html#programs-eligibility">Programs &amp; Eligibility</a>
+            <a href="pages/admissions.html#application-process">Application Process</a>
+            <a href="pages/admissions.html#entrance-exams">Entrance Exams</a>
+            <a href="pages/admissions.html#important-dates">Important Dates</a>
+            <a href="pages/admissions.html#fee-structure">Fee Structure</a>
+            <a href="pages/admissions.html#prospectus-faqs">Prospectus &amp; FAQs</a>
+            <a href="pages/prospectus.html">Prospectus</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true">Research &amp; Innovation <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <div class="dropdown-menu">
+            <a href="pages/research-innovation.html#research-areas">Research Areas</a>
+            <a href="pages/research-innovation.html#projects-publications">Projects &amp; Publications</a>
+            <a href="pages/research-innovation.html#research-centers">Research Centers</a>
+            <a href="pages/research-innovation.html#collaborations">Collaborations &amp; MoUs</a>
+            <a href="pages/research-innovation.html#innovation-incubation">Innovation &amp; Incubation</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true">Students <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <div class="dropdown-menu">
+            <a href="pages/students.html#academic-support">Academic Support</a>
+            <a href="pages/students.html#student-services">Student Services</a>
+            <a href="pages/students.html#student-life">Student Life</a>
+            <a href="pages/students.html#support-compliance">Support &amp; Compliance</a>
+            <a href="pages/students.html#career-placement">Career &amp; Placement</a>
+            <a href="pages/semester-results.html">Semester Results</a>
+            <a href="pages/hostels.html">Hostels</a>
+            <a href="pages/samarth-student-login.html">Samarth Student Login</a>
+            <a href="pages/ncc.html">NCC</a>
+            <a href="pages/nss.html">NSS</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true">Faculty &amp; Staff <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <div class="dropdown-menu">
+            <a href="pages/faculty-staff.html#faculty-directory">Faculty Directory</a>
+            <a href="pages/faculty-staff.html#staff-directory">Staff Directory</a>
+            <a href="pages/faculty-staff.html#recruitment-careers">Recruitment &amp; Careers</a>
+            <a href="pages/faculty-staff.html#internal-portals">Internal Portals</a>
+            <a href="pages/faculty-staff.html#hr-policies">HR Policies</a>
+            <a href="pages/samarth-faculty-login.html">Samarth Faculty Login</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true">Campus &amp; Facilities <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <div class="dropdown-menu">
+            <a href="pages/campus-facilities.html#infrastructure">Infrastructure</a>
+            <a href="pages/campus-facilities.html#library">Library</a>
+            <a href="pages/campus-facilities.html#laboratories">Laboratories</a>
+            <a href="pages/campus-facilities.html#sports-health">Sports &amp; Health</a>
+            <a href="pages/campus-facilities.html#gallery-tour">Gallery &amp; Virtual Tour</a>
+            <a href="pages/campus-facilities.html#sustainability">Sustainability</a>
+            <a href="pages/sports-facilities.html">Sports Facilities</a>
+            <a href="pages/smart-classrooms.html">Smart Classrooms</a>
+            <a href="pages/medical-facility.html">Medical Facility</a>
+            <a href="pages/vehicle-facilities.html">Vehicle Facilities</a>
+            <a href="pages/auditorium.html">Auditorium</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true">Examination &amp; Results <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <div class="dropdown-menu">
+            <a href="pages/examination-results.html#examination-notices">Examination Notices</a>
+            <a href="pages/examination-results.html#exam-schedule">Exam Schedule</a>
+            <a href="pages/examination-results.html#results">Results</a>
+            <a href="pages/examination-results.html#admit-cards">Admit Cards</a>
+            <a href="pages/examination-results.html#exam-forms">Forms</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true">Downloads &amp; Documents <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <div class="dropdown-menu">
+            <a href="pages/downloads-documents.html#forms">Forms</a>
+            <a href="pages/downloads-documents.html#circulars">Circulars</a>
+            <a href="pages/downloads-documents.html#notices">Notices</a>
+            <a href="pages/downloads-documents.html#tenders">Tenders</a>
+            <a href="pages/downloads-documents.html#reports-documents">Reports &amp; Documents</a>
+            <a href="pages/quick-downloadable-links.html">Quick Downloads</a>
+            <a href="pages/prospectus.html">Prospectus</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true">Digital Services <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <div class="dropdown-menu">
+            <a href="pages/digital-services.html#erp-login">ERP / Login</a>
+            <a href="pages/digital-services.html#email-services">Email Services</a>
+            <a href="pages/digital-services.html#online-fee-payment">Online Fee Payment</a>
+            <a href="pages/digital-services.html#digital-library">Digital Library</a>
+            <a href="pages/digital-services.html#other-online-services">Other Online Services</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav><div class="nav-spacer" aria-hidden="true" style="height: 484px;"></div>
+</header>
+</div>
+
+  <main id="main-content" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-title">
+      <picture>
+        <img src="./assets/drone.png" alt="Aerial view of Central University of South Bihar campus" loading="eager">
+      </picture>
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <div class="hero-copy">
+          <h1 id="hero-title">Inspiring Minds,<br>Transforming Futures</h1>
+          <p>Central University of South Bihar is committed to excellence in teaching, research, innovation and inclusive development.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="pages/about.html">Explore CUSB <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+            <a class="btn secondary" href="#campus-map">Discover More <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div data-component="quick-links"><section id="quick-actions" class="container quick-strip" aria-label="Quick access links">
+  <button class="scroll-btn" type="button" data-scroll-target=".quick-list" data-scroll-dir="-1" aria-label="Scroll quick access left"><i data-lucide="chevron-left" aria-hidden="true"></i></button>
+  <div class="quick-list" tabindex="0">
+    <a href="pages/admissions.html"><i data-lucide="star" aria-hidden="true"></i><span><strong>Admissions</strong><small>Apply &amp; Info</small></span></a>
+    <a href="pages/examination-results.html"><i data-lucide="clipboard-list" aria-hidden="true"></i><span><strong>Examination</strong><small>Results &amp; Notices</small></span></a>
+    <a href="pages/downloads-documents.html"><i data-lucide="download" aria-hidden="true"></i><span><strong>Downloads</strong><small>Forms &amp; Documents</small></span></a>
+    <a href="pages/digital-services.html"><i data-lucide="monitor-check" aria-hidden="true"></i><span><strong>Digital Services</strong><small>Online Services</small></span></a>
+    <a href="pages/contact-directory.html"><i data-lucide="phone-call" aria-hidden="true"></i><span><strong>Contact Directory</strong><small>Find People</small></span></a>
+  </div>
+  <button class="scroll-btn" type="button" data-scroll-target=".quick-list" data-scroll-dir="1" aria-label="Scroll quick access right"><i data-lucide="chevron-right" aria-hidden="true"></i></button>
+</section>
+</div>
+
+    <section class="container home-section leadership-section" aria-labelledby="leaders-title">
+      <div class="home-section-head">
+        <h2 id="leaders-title">Our Leadership</h2>
+        <p>Guided by vision, driven by commitment. Our leadership team works tirelessly to advance excellence in education, research and inclusive development.</p>
+      </div>
+      <div class="leaders-grid">
+        <article class="leader-card">
+          <img src="./assets/president.jpeg" alt="Smt. Draupadi Murmu" loading="lazy">
+          <div>
+            <span class="leader-icon"><i data-lucide="user-round" aria-hidden="true"></i></span>
+            <h3>Smt. Draupadi Murmu</h3>
+            <p>President Of India</p>
+            <small>needs correction</small>
+            <a href="pages/about.html#leadership">View Profile <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </article>
+        <article class="leader-card">
+          <img src="./assets/chancellor.jpg.png" alt="C.P. Thakur" loading="lazy">
+          <div>
+            <span class="leader-icon"><i data-lucide="shield-check" aria-hidden="true"></i></span>
+            <h3>C.P. Thakur</h3>
+            <p>Chancellor</p>
+            <small>needs correction</small>
+            <a href="pages/about.html#leadership">View Profile <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </article>
+        <article class="leader-card">
+          <img src="./assets/vc.jpg" alt="Prof.Kameshwar Nath Singh" loading="lazy">
+          <div>
+            <span class="leader-icon"><i data-lucide="settings" aria-hidden="true"></i></span>
+            <h3>Prof.Kameshwar Nath Singh</h3>
+            <p>Vice Chancellor</p>
+            <small>Ensuring efficient governance, transparency and smooth administration to support the university mission.</small>
+            <a href="pages/about.html#leadership">View Profile <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="container home-section news-highlights" aria-labelledby="news-title">
+      <div class="home-section-head">
+        <h2 id="news-title">News &amp; Highlights</h2>
+        <p>Stay updated with the latest happenings, achievements and important announcements from CUSB.</p>
+      </div>
+
+      <div class="home-news-grid">
+        <article class="spotlight-news">
+          <img src="./assets/aryabhatta.jpeg" alt="Central University of South Bihar entrance" loading="lazy">
+          <div>
+            <span>Top Story</span>
+            <h3>CUSB Ranked Among Top Central Universities</h3>
+            <p><i data-lucide="calendar-days" aria-hidden="true"></i> May 21, 2026</p>
+            <small>CUSB has been ranked among the top performing central universities in India for academic excellence and research outcomes.</small>
+            <a href="pages/about.html#reports-disclosures">Read More <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </article>
+
+        <aside class="highlight-list panel" aria-label="Highlights">
+          <h3><i data-lucide="sparkles" aria-hidden="true"></i> Highlights</h3>
+          <a href="pages/admissions.html#admission-overview"><span>Admissions Open 2026-27</span><i data-lucide="arrow-right" aria-hidden="true"></i></a>
+          <a href="pages/examination-results.html#results"><span>Results Declared</span><i data-lucide="arrow-right" aria-hidden="true"></i></a>
+          <a href="pages/research-innovation.html#research-centers"><span>New Research Center Inaugurated</span><i data-lucide="arrow-right" aria-hidden="true"></i></a>
+          <a href="pages/research-innovation.html#collaborations"><span>International Conference 2026</span><i data-lucide="arrow-right" aria-hidden="true"></i></a>
+          <a href="pages/downloads-documents.html#notices"><span>CUSB in the Media</span><i data-lucide="arrow-right" aria-hidden="true"></i></a>
+        </aside>
+
+        <div class="mini-news-grid">
+          <article class="news-card">
+            <img src="./assets/malviya.jpeg" alt="Lecture hall event" loading="lazy">
+            <time datetime="2026-05-10"><span>May</span>10</time>
+            <strong>Guest Lecture on Emerging Technologies</strong>
+            <a href="pages/research-innovation.html">Read <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+          </article>
+          <article class="news-card">
+            <img src="./assets/sports.jpeg" alt="Students during campus event" loading="lazy">
+            <time datetime="2026-05-05"><span>May</span>05</time>
+            <strong>Cultural Fest 2026 Celebrated With Enthusiasm</strong>
+            <a href="pages/students.html#student-life">Read <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+          </article>
+          <article class="news-card">
+            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&amp;fit=crop&amp;w=440&amp;q=75" alt="Research team in lab" loading="lazy">
+            <time datetime="2026-05-05"><span>May</span>05</time>
+            <strong>Research Team Publishes High Impact Paper</strong>
+            <a href="pages/research-innovation.html#projects-publications">Read <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+          </article>
+          <article class="news-card">
+            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&amp;fit=crop&amp;w=440&amp;q=75" alt="Academic workshop" loading="lazy">
+            <time datetime="2026-05-02"><span>May</span>02</time>
+            <strong>Workshop on NEP 2020 Implementation</strong>
+            <a href="pages/academics.html#academic-resources">Read <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+          </article>
+        </div>
+
+
+      </div>
+
+      <a class="center-link" href="pages/downloads-documents.html#notices"><i data-lucide="newspaper" aria-hidden="true"></i> View All News <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+    </section>
+
+    <section class="container home-section events-section" aria-labelledby="events-title">
+      <div class="home-section-head">
+        <h2 id="events-title">Events</h2>
+        <p>Explore upcoming events, seminars, workshops and celebrations happening across the university.</p>
+      </div>
+      <div class="events-home-grid">
+        <article class="event-card">
+          <img src="./assets/aryabhatta.jpeg" alt="Campus seminar venue" loading="lazy">
+          <time datetime="2026-05-18"><span>May</span>18</time>
+          <small>Seminar</small>
+          <h3>Seminar on the Future of Artificial Intelligence</h3>
+          <p><i data-lucide="clock" aria-hidden="true"></i> 10:00 AM - 12:00 PM</p>
+          <a href="pages/research-innovation.html">Auditorium, Academic Block <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+        </article>
+        <article class="event-card">
+          <img src="./assets/sports.jpeg" alt="Students celebrating cultural fest" loading="lazy">
+          <time datetime="2026-05-24"><span>May</span>24</time>
+          <small>Cultural</small>
+          <h3>Cultural Fest 2026 Celebrating Diversity</h3>
+          <p><i data-lucide="clock" aria-hidden="true"></i> All Day</p>
+          <a href="pages/students.html#student-life">University Lawn <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+        </article>
+        <article class="event-card">
+          <img src="./assets/malviya.jpeg" alt="Research methodology workshop" loading="lazy">
+          <time datetime="2026-05-30"><span>May</span>30</time>
+          <small>Workshop</small>
+          <h3>Research Methodology Workshop</h3>
+          <p><i data-lucide="clock" aria-hidden="true"></i> 03:00 PM - 05:00 PM</p>
+          <a href="pages/research-innovation.html#research-areas">Seminar Hall 2 <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+        </article>
+        <aside class="calendar-card panel" data-event-calendar="">
+          <h3><i data-lucide="calendar-days" aria-hidden="true"></i> Event Calendar</h3>
+          <div class="calendar-month">
+            <button type="button" aria-label="Previous month" data-calendar-prev=""><i data-lucide="chevron-left" aria-hidden="true"></i></button>
+            <strong data-calendar-title="">May 2026</strong>
+            <button type="button" aria-label="Next month" data-calendar-next=""><i data-lucide="chevron-right" aria-hidden="true"></i></button>
+          </div>
+          <div class="calendar-grid" aria-label="May 2026 calendar" data-calendar-grid=""><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><small class="is-muted">26</small><small class="is-muted">27</small><small class="is-muted">28</small><small class="is-muted">29</small><small class="is-muted">30</small><small>1</small><small>2</small><small>3</small><small>4</small><small>5</small><small>6</small><small>7</small><small>8</small><small>9</small><small>10</small><small>11</small><small>12</small><small>13</small><small>14</small><small>15</small><small>16</small><small>17</small><small class="is-event" title="Seminar on the Future of Artificial Intelligence" aria-label="May 18, 2026: Seminar on the Future of Artificial Intelligence">18</small><small>19</small><small>20</small><small>21</small><small>22</small><small>23</small><small class="is-event" title="Cultural Fest 2026 Celebrating Diversity" aria-label="May 24, 2026: Cultural Fest 2026 Celebrating Diversity">24</small><small>25</small><small class="is-today" aria-current="date">26</small><small>27</small><small>28</small><small>29</small><small class="is-event" title="Research Methodology Workshop" aria-label="May 30, 2026: Research Methodology Workshop">30</small><small>31</small><small class="is-muted">1</small><small class="is-muted">2</small><small class="is-muted">3</small><small class="is-muted">4</small><small class="is-muted">5</small><small class="is-muted">6</small></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="container home-section collage-gallery-section" aria-labelledby="gallery-title">
+      <div class="home-section-head">
+        <h2 id="gallery-title">Campus Gallery</h2>
+        <p>Explore campus spaces, academic life, student activities and memorable university moments.</p>
+      </div>
+
+      <div class="gallery-collage" aria-label="Campus gallery collage">
+        <a class="collage-tile tile-large" href="pages/gallery-detail.html?id=campus-aerial">
+          <img src="./assets/drone.png" alt="Aerial view of Central University of South Bihar campus" loading="lazy">
+          <span><small>Campus Landscape</small><strong>Campus Aerial View</strong><em>View details</em></span>
+        </a>
+        <a class="collage-tile tile-tall" href="pages/gallery-detail.html?id=aryabhatta-block">
+          <img src="./assets/aryabhatta.jpeg" alt="Aryabhatta academic block at Central University of South Bihar" loading="lazy">
+          <span><small>Academic Spaces</small><strong>Aryabhatta Academic Block</strong><em>View details</em></span>
+        </a>
+        <a class="collage-tile" href="pages/gallery-detail.html?id=central-library">
+          <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&amp;fit=crop&amp;w=900&amp;q=75" alt="Library reading room with bookshelves" loading="lazy">
+          <span><small>Academic Resources</small><strong>Central Library</strong><em>View details</em></span>
+        </a>
+        <a class="collage-tile tile-wide" href="pages/gallery-detail.html?id=sports-ground">
+          <img src="./assets/sports.jpeg" alt="Students participating in sports activities" loading="lazy">
+          <span><small>Student Wellness</small><strong>Sports Ground</strong><em>View details</em></span>
+        </a>
+        <a class="collage-tile" href="pages/gallery-detail.html?id=research-labs">
+          <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&amp;fit=crop&amp;w=900&amp;q=75" alt="Students working in a laboratory" loading="lazy">
+          <span><small>Research &amp; Innovation</small><strong>Research Labs</strong><em>View details</em></span>
+        </a>
+        <a class="collage-tile tile-tall" href="pages/gallery-detail.html?id=malviya-hostel">
+          <img src="./assets/malviya.jpeg" alt="Malviya hostel building on campus" loading="lazy">
+          <span><small>Residential Life</small><strong>Malviya Hostel</strong><em>View details</em></span>
+        </a>
+        <a class="collage-tile tile-wide" href="pages/gallery-detail.html?id=student-workshop">
+          <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&amp;fit=crop&amp;w=900&amp;q=75" alt="Students attending an academic workshop" loading="lazy">
+          <span><small>Learning Events</small><strong>Student Workshop</strong><em>View details</em></span>
+        </a>
+        <a class="collage-tile" href="pages/gallery-detail.html?id=campus-life">
+          <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&amp;fit=crop&amp;w=900&amp;q=75" alt="Students gathered on a university campus" loading="lazy">
+          <span><small>Community</small><strong>Campus Life</strong><em>View details</em></span>
+        </a>
+      </div>
+    </section>
+
+    <section id="campus-map" class="container home-section campus-section" aria-labelledby="campus-title">
+      <div class="home-section-head">
+        <h2 id="campus-title">Our Campus</h2>
+        <p>A vibrant, open and student-friendly campus equipped with modern infrastructure and world-class facilities to learn, live and grow.</p>
+      </div>
+      <div class="campus-home-grid">
+        <article class="campus-card">
+          <img src="./assets/malviya.jpeg" alt="Hostel building" loading="lazy">
+          <div><i data-lucide="bed-double" aria-hidden="true"></i><h3>Hostel</h3><p>Safe, comfortable and fully-equipped hostels for boys and girls.</p><a href="pages/hostels.html">Learn More <i data-lucide="arrow-right" aria-hidden="true"></i></a></div>
+        </article>
+        <article class="campus-card">
+          <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&amp;fit=crop&amp;w=560&amp;q=75" alt="Library reading room" loading="lazy">
+          <div><i data-lucide="book-open" aria-hidden="true"></i><h3>Library</h3><p>A vast collection of books, journals and digital resources.</p><a href="pages/campus-facilities.html#library">Learn More <i data-lucide="arrow-right" aria-hidden="true"></i></a></div>
+        </article>
+        <article class="campus-card">
+          <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&amp;fit=crop&amp;w=560&amp;q=75" alt="Canteen seating area" loading="lazy">
+          <div><i data-lucide="utensils" aria-hidden="true"></i><h3>Canteen</h3><p>Hygienic and affordable food options in a comfortable environment.</p><a href="pages/campus-facilities.html">Learn More <i data-lucide="arrow-right" aria-hidden="true"></i></a></div>
+        </article>
+        <article class="campus-card">
+          <img src="./assets/sports.jpeg" alt="Sports complex" loading="lazy">
+          <div><i data-lucide="dumbbell" aria-hidden="true"></i><h3>Sports Complex</h3><p>Facilities for indoor and outdoor sports, recreation and fitness.</p><a href="pages/sports-facilities.html">Learn More <i data-lucide="arrow-right" aria-hidden="true"></i></a></div>
+        </article>
+        <article class="campus-card wide">
+          <img src="./assets/drone.png" alt="Green campus plantation area" loading="lazy">
+          <div><i data-lucide="leaf" aria-hidden="true"></i><h3>Plantation Area</h3><p>A green initiative to promote sustainability and maintain a clean campus environment.</p><a href="pages/campus-facilities.html#sustainability">Learn More <i data-lucide="arrow-right" aria-hidden="true"></i></a></div>
+        </article>
+        <article class="campus-card wide">
+          <img src="https://images.unsplash.com/photo-1495107334309-fcf20504a5ab?auto=format&amp;fit=crop&amp;w=760&amp;q=75" alt="Agriculture fields" loading="lazy">
+          <div><i data-lucide="tractor" aria-hidden="true"></i><h3>Agriculture Fields</h3><p>Hands-on learning through modern agricultural practices and research in real fields.</p><a href="pages/department-agriculture.html">Learn More <i data-lucide="arrow-right" aria-hidden="true"></i></a></div>
+        </article>
+        <aside class="campus-stats panel">
+          <div><i data-lucide="building-2" aria-hidden="true"></i><strong>150+</strong><span>Acres of Green Campus</span></div>
+          <div><i data-lucide="landmark" aria-hidden="true"></i><strong>25+</strong><span>Academic Buildings</span></div>
+          <div><i data-lucide="users" aria-hidden="true"></i><strong>10,000+</strong><span>Students</span></div>
+          <div><i data-lucide="trophy" aria-hidden="true"></i><strong>30+</strong><span>Sports Facilities</span></div>
+          <div><i data-lucide="leaf" aria-hidden="true"></i><strong>100,000+</strong><span>Trees Planted</span></div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <div data-component="footer"><footer class="site-footer" role="contentinfo">
+  <div class="container footer-grid">
+    <section class="footer-brand" aria-label="University summary">
+      <a class="brand footer-logo" href="index.html" aria-label="Central University of South Bihar home">
+        <img class="brand-logo" src="assets/images/culog.png" alt="Central University of South Bihar emblem" width="68" height="68">
+        <span>
+          <strong>Central University<br>of South Bihar</strong>
+        </span>
+      </a>
+      <p>Committed to excellence in teaching, research, innovation and inclusive development.</p>
+      <div class="social-links" aria-label="Social media links">
+        <a href="#" aria-label="Facebook" class="social-facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.514c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"></path>
+          </svg>
+        </a>
+        <a href="#" aria-label="Twitter / X" class="social-twitter">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+          </svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" class="social-linkedin">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+          </svg>
+        </a>
+        <a href="#" aria-label="Instagram" class="social-instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"></path>
+          </svg>
+        </a>
+        <a href="#" aria-label="YouTube" class="social-youtube">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <nav aria-label="Footer quick links">
+      <h2>Quick Links</h2>
+      <a href="pages/about.html#overview">About CUSB</a>
+      <a href="pages/academics.html#schools-departments">Academics</a>
+      <a href="pages/admissions.html#admission-overview">Admissions</a>
+      <a href="pages/students.html">Students</a>
+      <a href="pages/faculty-staff.html">Faculty &amp; Staff</a>
+      <a href="pages/campus-facilities.html">Campus &amp; Facilities</a>
+    </nav>
+
+    <nav aria-label="Footer resources links">
+      <h2>Resources</h2>
+      <a href="pages/examination-results.html">Examination &amp; Results</a>
+      <a href="pages/downloads-documents.html">Downloads &amp; Documents</a>
+      <a href="pages/digital-services.html">Digital Services</a>
+      <a href="pages/rti.html">RTI</a>
+      <a href="pages/government-links.html">Government Links</a>
+      <a href="pages/samarth-faculty-login.html">ERP / Login</a>
+    </nav>
+
+    <section aria-label="Contact details">
+      <h2>Contact Us</h2>
+      <p>Central University of South Bihar,<br>NH-31, Gaya - Panchanpur Road,<br>Village - Karhara, Dist. Gaya,<br>Bihar - 824236</p>
+      <p><i data-lucide="phone" aria-hidden="true"></i> +91-0631-222 9510</p>
+      <p><i data-lucide="mail" aria-hidden="true"></i> info@cusb.ac.in</p>
+    </section>
+
+    <section class="footer-map" aria-label="Campus map">
+      <h2>Find Us</h2>
+      <iframe title="Map showing Central University of South Bihar" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=84.997%2C24.752%2C85.010%2C24.765&amp;layer=mapnik&amp;marker=24.7585%2C85.004"></iframe>
+      <a class="footer-map-link" href="pages/contact-directory.html#location-map">View on Google Maps</a>
+    </section>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© 2026 Central University of South Bihar. All Rights Reserved.</p>
+      <nav aria-label="Global footer links">
+        <a href="pages/privacy-policy.html">Privacy Policy</a>
+        <a href="pages/rti.html">RTI</a>
+        <a href="pages/accessibility-statement.html">Accessibility</a>
+        <a href="pages/sitemap.html">Sitemap</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<section class="chatbot-widget" data-chatbot="" aria-label="CUSB virtual assistant">
+  <div class="chatbot-panel" data-chatbot-panel="" hidden="">
+    <div class="chatbot-header">
+      <span>
+        <strong>CUSB Assistant</strong>
+        <small>Quick help desk</small>
+      </span>
+      <button class="chatbot-icon-btn" type="button" data-chatbot-close="" aria-label="Close chat">
+        <i data-lucide="x" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="chatbot-messages" data-chatbot-messages="" aria-live="polite">
+      <div class="chatbot-message bot">Hello. I can help with admissions, hostels, results, downloads, contact details and campus facilities.</div>
+    </div>
+    <div class="chatbot-prompts" aria-label="Suggested questions">
+      <button type="button" data-chatbot-prompt="admission">Admissions</button>
+      <button type="button" data-chatbot-prompt="hostel">Hostels</button>
+      <button type="button" data-chatbot-prompt="result">Results</button>
+    </div>
+    <form class="chatbot-form" data-chatbot-form="">
+      <label class="sr-only" for="chatbot-input">Ask the CUSB assistant</label>
+      <input id="chatbot-input" type="text" data-chatbot-input="" autocomplete="off" placeholder="Ask a question">
+      <button type="submit" aria-label="Send message">
+        <i data-lucide="send" aria-hidden="true"></i>
+      </button>
+    </form>
+  </div>
+  <button class="chatbot-toggle" type="button" data-chatbot-toggle="" aria-label="Open chat assistant" aria-expanded="false">
+    <i data-lucide="message-circle" aria-hidden="true"></i>
+  </button>
+</section>
+<button class="back-to-top" type="button" data-back-to-top="" aria-label="Scroll to top">
+  <i data-lucide="arrow-up" aria-hidden="true"></i>
+</button>
+</div>
+  <dialog class="keyboard-dialog" data-keyboard-dialog="" aria-labelledby="keyboard-title">
+    <h2 id="keyboard-title">Keyboard Navigation</h2>
+    <p>Use Tab and Shift + Tab to move through links and controls. Press Escape to close dialogs and menus.</p>
+    <button class="btn primary compact" type="button" data-dialog-close="" aria-label="Close keyboard navigation help">Close</button>
+  </dialog>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer=""></script>
+  <script src="js/components.js" defer=""></script>
+  <script src="js/theme.js" defer=""></script>
+  <script src="js/accessibility.js" defer=""></script>
+  <script src="js/main.js" defer=""></script>
+
+
+<div class="accessibility-tooltip" role="tooltip" hidden=""></div></body></html>

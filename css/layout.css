@@ -1134,7 +1134,7 @@
 }
 
 .nav-inner {
-  min-height: 48px;
+  min-height: 68px;
   justify-content: center;
 }
 
@@ -1146,7 +1146,7 @@
 }
 
 .nav-trigger {
-  min-height: 48px;
+  min-height: 68px;
   padding: 0;
   color: var(--navy);
   font-size: .72rem;
@@ -1293,6 +1293,34 @@
 .quick-list small {
   color: var(--muted);
   font-size: .76rem;
+}
+
+@media (min-width: 901px) {
+  .quick-list {
+    grid-auto-flow: row;
+    grid-auto-columns: initial;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(74px, auto));
+    overflow-x: visible;
+  }
+
+  .quick-list a,
+  .quick-list a:nth-child(4n + 1),
+  .quick-list a:nth-child(4n + 2),
+  .quick-list a:nth-child(4n + 3),
+  .quick-list a:nth-child(4n + 4) {
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding-inline: 18px;
+  }
+
+  .quick-list a:nth-child(5n) {
+    border-right: 0;
+  }
+
+  .quick-list a:nth-last-child(-n + 4) {
+    border-bottom: 0;
+  }
 }
 
 .page-hero {
@@ -1540,7 +1568,7 @@
     background: #fff;
   }
 
-  .language-select select {
+  .language-select-button {
     max-width: calc(100vw - 82px);
   }
 
@@ -1759,21 +1787,33 @@
     z-index: 1019;
     width: 44px;
     max-width: 44px;
+    height: 44px;
     min-height: 44px;
     justify-content: center;
-    padding-inline: 0;
+    gap: 0;
+    padding: 0;
     border: 1px solid var(--border);
-    border-radius: 999px;
+    border-radius: 50%;
     background: #fff;
-    overflow: hidden;
+    overflow: visible;
   }
 
-  .language-select select {
+  .language-select > svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .language-select-button {
     position: absolute;
     inset: 0;
     width: 100%;
-    max-width: none;
-    opacity: 0;
+    justify-content: center;
+    padding-inline: 0;
+  }
+
+  .language-select-button svg,
+  .language-select-button span {
+    display: none;
   }
 
   .main-nav {
@@ -1848,16 +1888,16 @@
   }
 
   .language-select {
-    width: 52px;
-    max-width: 52px;
+    width: 44px;
+    max-width: 44px;
+    height: 44px;
     justify-content: center;
-    padding-inline: 8px;
+    padding: 0;
   }
 
-  .language-select select {
-    width: 22px;
+  .language-select-button {
+    width: 100%;
     min-width: 22px;
-    color: transparent;
   }
 }
 
@@ -1880,7 +1920,7 @@
   .utility-grid>.menu-toggle {
     position: absolute !important;
     top: 26px !important;
-    right: 0 !important;
+    right: 8px !important;
   }
 
   .site-search,
@@ -1892,24 +1932,32 @@
   .utility-grid>.language-select {
     position: absolute !important;
     top: 26px !important;
-    right: 52px !important;
+    right: 62px !important;
     width: 44px;
     max-width: 44px;
+    height: 44px;
     min-height: 42px;
     justify-content: center;
-    padding-inline: 0;
-    overflow: hidden;
+    gap: 0;
+    padding: 0;
+    border-radius: 50%;
+    overflow: visible;
   }
 
   .language-select svg {
     flex: 0 0 auto;
   }
 
-  .language-select select {
+  .language-select-button {
     position: absolute;
     inset: 0;
     width: 100%;
-    max-width: none;
-    opacity: 0;
+    justify-content: center;
+    padding-inline: 0;
+  }
+
+  .language-select-button svg,
+  .language-select-button span {
+    display: none;
   }
 }

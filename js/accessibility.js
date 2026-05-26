@@ -3,11 +3,16 @@
   const fontStorageKey = "cusb-font-scale";
   const dyslexiaStorageKey = "cusb-dyslexia";
   const languageStorageKey = "cusb-language";
+  const translateReloadKey = "cusb-translate-reload";
   const translateLanguages = "en,hi,bn,gu,kn,ml,mr,pa,ta,te,ur";
   let speechUtterance = null;
   let speechStartButtons = [];
   let speechStopButtons = [];
   let translateLoaded = false;
+  let pendingLanguage = null;
+  let translateRetryTimer = 0;
+  let previousBannerVisible = false;
+  let wasTranslated = false;
 
   function setFontScale(scale) {
     // Font size range: 16px (scale 1.0) to 50px (scale 3.125)
@@ -127,21 +132,87 @@
     }
   }
 
-  function loadTranslate() {
-    if (translateLoaded || window.google?.translate?.TranslateElement) return;
-    translateLoaded = true;
-    window.googleTranslateElementInit = function googleTranslateElementInit() {
+  function clearCookie(name) {
+    document.cookie = `${name}=;path=/;max-age=0`;
+    if (window.location.hostname.includes(".")) {
+      document.cookie = `${name}=;path=/;domain=${window.location.hostname};max-age=0`;
+    }
+  }
+
+  function resetToEnglish() {
+    // Reset language to English when translator is disabled
+    window.clearTimeout(translateRetryTimer);
+    sessionStorage.removeItem(translateReloadKey);
+    clearCookie("googtrans");
+    setCookie("googtrans", "/en/en");
+    pendingLanguage = "en";
+    localStorage.setItem(languageStorageKey, "en");
+    document.documentElement.lang = "en";
+    
+    // Update language selector UI to show English without triggering applyLanguage
+    document.querySelectorAll(".language-select").forEach((control) => {
+      const select = control.querySelector("[data-language-select]");
+      const current = control.querySelector("[data-language-current]");
+      const button = control.querySelector("[data-language-button]");
+      const menu = control.querySelector("[data-language-menu]");
+      
+      // Set the select value to English
+      if (select) {
+        select.value = "en";
+      }
+      
+      // Update the display text
+      if (current) {
+        current.textContent = "English";
+      }
+      
+      // Update aria-selected on all menu options  
+      if (menu) {
+        menu.querySelectorAll("[data-language-option]").forEach((optionButton) => {
+          optionButton.setAttribute("aria-selected", String(optionButton.dataset.languageOption === "en"));
+        });
+      }
+    });
+    
+    // Sync the banner after UI update
+    window.setTimeout(syncTranslateBanner, 100);
+  }
+
+  function translateMount() {
+    let mount = document.querySelector("#google_translate_element");
+    if (!mount) {
+      mount = document.createElement("div");
+      mount.id = "google_translate_element";
+      mount.setAttribute("aria-hidden", "true");
+      document.body.appendChild(mount);
+    }
+    return mount;
+  }
+
+  function initTranslateElement() {
+    const mount = translateMount();
+    if (!mount.querySelector(".goog-te-gadget")) {
       new window.google.translate.TranslateElement({
         pageLanguage: "en",
         includedLanguages: translateLanguages,
         autoDisplay: false
       }, "google_translate_element");
-    };
+    }
+    if (pendingLanguage && pendingLanguage !== "en") {
+      window.setTimeout(() => applyTranslateCombo(pendingLanguage), 250);
+    }
+  }
 
-    const mount = document.createElement("div");
-    mount.id = "google_translate_element";
-    mount.setAttribute("aria-hidden", "true");
-    document.body.appendChild(mount);
+  function loadTranslate() {
+    if (window.google?.translate?.TranslateElement) {
+      initTranslateElement();
+      return;
+    }
+
+    translateMount();
+    if (translateLoaded) return;
+    translateLoaded = true;
+    window.googleTranslateElementInit = initTranslateElement;
 
     const script = document.createElement("script");
     script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
@@ -149,7 +220,33 @@
     document.head.appendChild(script);
   }
 
+  function applyTranslateCombo(language, attempt = 0) {
+    window.clearTimeout(translateRetryTimer);
+
+    const combo = document.querySelector(".goog-te-combo");
+    if (combo) {
+      sessionStorage.removeItem(translateReloadKey);
+      combo.value = language;
+      combo.dispatchEvent(new Event("change", { bubbles: true }));
+      window.setTimeout(syncTranslateBanner, 300);
+      return;
+    }
+
+    if (attempt >= 24) {
+      if (language !== "en" && sessionStorage.getItem(translateReloadKey) !== language) {
+        sessionStorage.setItem(translateReloadKey, language);
+        window.location.reload();
+      }
+      return;
+    }
+    translateRetryTimer = window.setTimeout(() => {
+      applyTranslateCombo(language, attempt + 1);
+    }, 250);
+  }
+
   function syncTranslateBanner() {
+    if (document.activeElement?.matches("[data-language-select]")) return;
+
     const banner = document.querySelector(".goog-te-banner-frame, iframe.skiptranslate");
     const isVisible = Boolean(banner && banner.offsetParent !== null && banner.offsetHeight > 0);
     const bannerHeight = isVisible ? banner.offsetHeight : 0;
@@ -158,16 +255,28 @@
     document.documentElement.style.setProperty("--translate-banner-offset", `${bannerHeight + 8}px`);
 
     const combo = document.querySelector(".goog-te-combo");
-    if (combo && (!combo.value || !isTranslated) && localStorage.getItem(languageStorageKey) !== "en") {
-      localStorage.setItem(languageStorageKey, "en");
-      document.documentElement.lang = "en";
-      document.querySelectorAll("[data-language-select]").forEach((select) => {
-        select.value = "en";
-      });
+    const savedLanguage = localStorage.getItem(languageStorageKey) || "en";
+    if (combo && savedLanguage !== "en" && combo.value !== savedLanguage) combo.value = savedLanguage;
+
+    // Detect when translator is disabled:
+    // 1. Banner was visible but now hidden, OR
+    // 2. Page was translated but is no longer translated
+    const transitionedFromTranslated = wasTranslated && !isTranslated;
+    const bannerDisappeared = previousBannerVisible && !isVisible;
+    
+    if ((bannerDisappeared || transitionedFromTranslated) && savedLanguage !== "en") {
+      // Translator has been disabled, reset to English
+      resetToEnglish();
     }
+    
+    previousBannerVisible = isVisible;
+    wasTranslated = isTranslated;
   }
 
   function initTranslateBannerWatcher() {
+    const banner = document.querySelector(".goog-te-banner-frame, iframe.skiptranslate");
+    previousBannerVisible = Boolean(banner && banner.offsetParent !== null && banner.offsetHeight > 0);
+    wasTranslated = document.documentElement.classList.contains("translated-ltr") || document.documentElement.classList.contains("translated-rtl");
     syncTranslateBanner();
     const observer = new MutationObserver(syncTranslateBanner);
     observer.observe(document.documentElement, {
@@ -181,31 +290,119 @@
 
   function applyLanguage(language) {
     const nextLanguage = language || "en";
+    pendingLanguage = nextLanguage;
     document.documentElement.lang = nextLanguage;
     localStorage.setItem(languageStorageKey, nextLanguage);
 
     if (nextLanguage === "en") {
+      window.clearTimeout(translateRetryTimer);
+      sessionStorage.removeItem(translateReloadKey);
+      clearCookie("googtrans");
       setCookie("googtrans", "/en/en");
       const combo = document.querySelector(".goog-te-combo");
       if (combo) {
         combo.value = "";
-        combo.dispatchEvent(new Event("change"));
+        combo.dispatchEvent(new Event("change", { bubbles: true }));
       }
       window.setTimeout(syncTranslateBanner, 300);
+      if (document.documentElement.classList.contains("translated-ltr") || document.documentElement.classList.contains("translated-rtl")) {
+        window.setTimeout(() => window.location.reload(), 350);
+      }
       return;
     } else {
       setCookie("googtrans", `/en/${nextLanguage}`);
       loadTranslate();
     }
 
-    const combo = document.querySelector(".goog-te-combo");
-    if (combo && combo.value !== nextLanguage) {
-      combo.value = nextLanguage;
-      combo.dispatchEvent(new Event("change"));
-      window.setTimeout(syncTranslateBanner, 300);
-    } else if (!combo && nextLanguage !== "en") {
-      window.setTimeout(() => applyLanguage(nextLanguage), 500);
-    }
+    applyTranslateCombo(nextLanguage);
+  }
+
+  function initLanguageControls() {
+    document.querySelectorAll(".language-select").forEach((control) => {
+      const select = control.querySelector("[data-language-select]");
+      const button = control.querySelector("[data-language-button]");
+      const current = control.querySelector("[data-language-current]");
+      const menu = control.querySelector("[data-language-menu]");
+      if (!select || !button || !menu) return;
+
+      const options = Array.from(select.options);
+
+      function closeMenu() {
+        control.classList.remove("is-open");
+        button.setAttribute("aria-expanded", "false");
+      }
+
+      function openMenu() {
+        control.classList.add("is-open");
+        button.setAttribute("aria-expanded", "true");
+        menu.querySelector(`[data-language-option="${select.value}"]`)?.focus();
+      }
+
+      function syncVisibleLanguage() {
+        const active = options.find((option) => option.value === select.value) || options[0];
+        if (current && active) current.textContent = active.textContent;
+        menu.querySelectorAll("[data-language-option]").forEach((optionButton) => {
+          optionButton.setAttribute("aria-selected", String(optionButton.dataset.languageOption === select.value));
+        });
+      }
+
+      if (!menu.children.length) {
+        options.forEach((option) => {
+          const optionButton = document.createElement("button");
+          optionButton.type = "button";
+          optionButton.dataset.languageOption = option.value;
+          optionButton.setAttribute("role", "option");
+          optionButton.textContent = option.textContent;
+          optionButton.addEventListener("click", () => {
+            select.value = option.value;
+            syncVisibleLanguage();
+            select.dispatchEvent(new Event("change", { bubbles: true }));
+            closeMenu();
+            button.focus({ preventScroll: true });
+          });
+          menu.appendChild(optionButton);
+        });
+      }
+
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        if (control.classList.contains("is-open")) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+
+      control.addEventListener("click", (event) => {
+        if (button.contains(event.target) || menu.contains(event.target)) return;
+        event.preventDefault();
+        event.stopPropagation();
+        if (control.classList.contains("is-open")) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+
+      menu.addEventListener("click", (event) => {
+        event.stopPropagation();
+      });
+
+      control.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeMenu();
+          button.focus({ preventScroll: true });
+        }
+      });
+
+      document.addEventListener("click", (event) => {
+        if (!control.contains(event.target)) closeMenu();
+      });
+
+      select.addEventListener("change", syncVisibleLanguage);
+      syncVisibleLanguage();
+    });
   }
 
   window.initAccessibility = function initAccessibility() {
@@ -254,6 +451,7 @@
         applyLanguage(select.value);
       });
     });
+    initLanguageControls();
 
     if (savedLanguage !== "en") applyLanguage(savedLanguage);
 

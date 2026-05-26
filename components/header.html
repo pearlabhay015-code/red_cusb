@@ -123,10 +123,14 @@
         <input id="site-search-input" type="search" placeholder="Search" autocomplete="off">
       </form>
 
-      <label class="language-select">
+      <div class="language-select" data-language-control>
         <span class="sr-only">Select language</span>
         <i data-lucide="languages" aria-hidden="true"></i>
-        <select data-language-select aria-label="Language selector">
+        <button class="language-select-button" type="button" data-language-button aria-haspopup="listbox" aria-expanded="false">
+          <span data-language-current>English</span>
+          <i data-lucide="chevron-down" aria-hidden="true"></i>
+        </button>
+        <select class="language-native" data-language-select aria-label="Language selector" tabindex="-1" aria-hidden="true">
           <option value="en">English</option>
           <option value="hi">Hindi</option>
           <option value="bn">Bengali</option>
@@ -139,7 +143,8 @@
           <option value="te">Telugu</option>
           <option value="ur">Urdu</option>
         </select>
-      </label>
+        <div class="language-menu" data-language-menu role="listbox" aria-label="Select language"></div>
+      </div>
 
       <button class="menu-toggle" type="button" aria-label="Open main navigation" aria-expanded="false"
         aria-controls="primary-navigation">

@@ -36,6 +36,60 @@
       summary: "A milestone ceremony celebrating graduates, families, faculty and the university community.",
       details: "Convocation marks the completion of an academic journey and celebrates the achievements of graduating students. The event brings together families, teachers, administrators and alumni to recognize academic effort and welcome graduates into a wider community of service and leadership.",
       highlights: ["Formal recognition of graduating students", "A shared celebration with families and faculty", "Connection to alumni and university traditions"]
+    },
+    "aryabhatta-block": {
+      title: "Aryabhatta Academic Block",
+      category: "Academic Spaces",
+      image: "./assets/aryabhatta.jpeg",
+      alt: "Aryabhatta academic block at Central University of South Bihar",
+      summary: "A core academic setting for lectures, seminars and everyday student movement across the campus.",
+      details: "The Aryabhatta Academic Block represents the university's daily academic rhythm, with classrooms, faculty interactions and shared corridors that keep teaching and student support close together. It is one of the spaces where formal learning and informal mentoring naturally meet.",
+      highlights: ["Lecture and classroom activity", "Faculty and student interaction zones", "Connected academic circulation"]
+    },
+    "malviya-hostel": {
+      title: "Malviya Hostel",
+      category: "Residential Life",
+      image: "./assets/malviya.jpeg",
+      alt: "Malviya hostel building on campus",
+      summary: "A residential setting designed for student comfort, routine, community and campus belonging.",
+      details: "The hostel environment supports students beyond classroom hours by creating a secure and social residential experience. Shared routines, peer support and easy access to campus facilities help residents stay connected to academic life and student activities.",
+      highlights: ["Residential support for students", "Peer community and shared routines", "Close access to campus facilities"]
+    },
+    "sports-ground": {
+      title: "Sports Ground",
+      category: "Student Wellness",
+      image: "./assets/sports.jpeg",
+      alt: "Students participating in sports activities",
+      summary: "Open sports facilities that encourage fitness, teamwork, recreation and campus events.",
+      details: "Sports facilities play an important role in student wellness and campus culture. The grounds support regular practice, friendly competition and larger university events that bring students together outside the classroom.",
+      highlights: ["Outdoor games and student fitness", "Team practice and competitions", "Venue for campus gatherings"]
+    },
+    "campus-aerial": {
+      title: "Campus Aerial View",
+      category: "Campus Landscape",
+      image: "./assets/drone.png",
+      alt: "Aerial view of Central University of South Bihar campus",
+      summary: "A broad view of the university's planned landscape, buildings, roads and green campus setting.",
+      details: "The aerial view shows the campus as a connected learning environment, combining academic infrastructure with open green areas, circulation routes and gathering points. It reflects the scale and planning of a modern residential university campus.",
+      highlights: ["Planned academic and residential zones", "Green campus landscape", "Connected pedestrian and vehicle routes"]
+    },
+    "student-workshop": {
+      title: "Student Workshop",
+      category: "Learning Events",
+      image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=82",
+      alt: "Students attending an academic workshop",
+      summary: "Interactive learning sessions where students explore new ideas with faculty and invited experts.",
+      details: "Workshops and academic sessions extend classroom learning through discussion, demonstrations and collaborative activity. They give students opportunities to engage with current themes, practical skills and cross-disciplinary perspectives.",
+      highlights: ["Interactive academic sessions", "Expert-led demonstrations", "Collaborative student participation"]
+    },
+    "campus-life": {
+      title: "Campus Life",
+      category: "Community",
+      image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1200&q=82",
+      alt: "Students gathered on a university campus",
+      summary: "Everyday student life shaped by friendships, activities, discussions and shared campus moments.",
+      details: "Campus life is built through ordinary moments of conversation, group work, cultural participation and student-led activity. These shared experiences give the university its sense of community and help students grow socially as well as academically.",
+      highlights: ["Student interaction and peer learning", "Clubs, culture and informal activity", "A lively residential university community"]
     }
   };
 
@@ -434,6 +488,89 @@
     });
   }
 
+  function initEventCalendar() {
+    const calendar = document.querySelector("[data-event-calendar]");
+    if (!calendar) return;
+
+    const title = calendar.querySelector("[data-calendar-title]");
+    const grid = calendar.querySelector("[data-calendar-grid]");
+    const previous = calendar.querySelector("[data-calendar-prev]");
+    const next = calendar.querySelector("[data-calendar-next]");
+    if (!title || !grid || !previous || !next) return;
+
+    const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const events = new Map([
+      ["2026-05-18", "Seminar on the Future of Artificial Intelligence"],
+      ["2026-05-24", "Cultural Fest 2026 Celebrating Diversity"],
+      ["2026-05-30", "Research Methodology Workshop"]
+    ]);
+    let visibleDate = new Date(2026, 4, 1);
+
+    function dateKey(date) {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const day = String(date.getDate()).padStart(2, "0");
+      return `${year}-${month}-${day}`;
+    }
+
+    function render() {
+      const year = visibleDate.getFullYear();
+      const month = visibleDate.getMonth();
+      const monthName = visibleDate.toLocaleString("en", { month: "long", year: "numeric" });
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const daysInPreviousMonth = new Date(year, month, 0).getDate();
+      const todayKey = dateKey(new Date());
+
+      title.textContent = monthName;
+      grid.setAttribute("aria-label", `${monthName} calendar`);
+      grid.innerHTML = weekdays.map((day) => `<span>${day}</span>`).join("");
+
+      for (let index = 0; index < 42; index += 1) {
+        const dayOffset = index - firstDay + 1;
+        const cellDate = new Date(year, month, dayOffset);
+        const cell = document.createElement("small");
+        const key = dateKey(cellDate);
+        const eventTitle = events.get(key);
+
+        if (dayOffset < 1) {
+          cell.textContent = String(daysInPreviousMonth + dayOffset);
+          cell.classList.add("is-muted");
+        } else if (dayOffset > daysInMonth) {
+          cell.textContent = String(dayOffset - daysInMonth);
+          cell.classList.add("is-muted");
+        } else {
+          cell.textContent = String(dayOffset);
+        }
+
+        if (eventTitle) {
+          cell.classList.add("is-event");
+          cell.title = eventTitle;
+          cell.setAttribute("aria-label", `${cellDate.toLocaleDateString("en", { month: "long", day: "numeric", year: "numeric" })}: ${eventTitle}`);
+        }
+
+        if (key === todayKey) {
+          cell.classList.add("is-today");
+          cell.setAttribute("aria-current", "date");
+        }
+
+        grid.appendChild(cell);
+      }
+    }
+
+    previous.addEventListener("click", () => {
+      visibleDate = new Date(visibleDate.getFullYear(), visibleDate.getMonth() - 1, 1);
+      render();
+    });
+
+    next.addEventListener("click", () => {
+      visibleDate = new Date(visibleDate.getFullYear(), visibleDate.getMonth() + 1, 1);
+      render();
+    });
+
+    render();
+  }
+
   function initGallery() {
     const gallery = document.querySelector("[data-gallery]");
     if (!gallery) return;
@@ -499,14 +636,17 @@
     const summary = page.querySelector("[data-gallery-detail-summary]");
     const details = page.querySelector("[data-gallery-detail-text]");
     const highlights = page.querySelector("[data-gallery-detail-highlights]");
+    const imageSrc = item.image.startsWith("./assets/") ? `../${item.image.slice(2)}` : item.image;
+    const hero = page.querySelector(".page-hero");
 
     document.title = `${item.title} | Gallery | Central University of South Bihar`;
-    image.src = item.image;
+    image.src = imageSrc;
     image.alt = item.alt;
     title.textContent = item.title;
     category.textContent = item.category;
     summary.textContent = item.summary;
     details.textContent = item.details;
+    hero?.style.setProperty("--page-hero-image", `url("${imageSrc}")`);
     highlights.innerHTML = "";
     item.highlights.forEach((highlight) => {
       const li = document.createElement("li");
@@ -794,6 +934,7 @@
     initBackToTop();
     initChatbot();
     initCampusDirections();
+    initEventCalendar();
     initGallery();
     initGalleryDetailPage();
     initAcademicsDirectory();
