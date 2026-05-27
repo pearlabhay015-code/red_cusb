@@ -4,7 +4,7 @@
   const dyslexiaStorageKey = "cusb-dyslexia";
   const languageStorageKey = "cusb-language";
   const translateReloadKey = "cusb-translate-reload";
-  const translateLanguages = "en,hi,bn,gu,kn,ml,mr,pa,ta,te,ur";
+  const translateLanguages = "en,hi,bn,gu,kn,ml,mr,pa,ta,te,ur,zh-CN,ja,ko,fr,ne";
   let speechUtterance = null;
   let speechStartButtons = [];
   let speechStopButtons = [];

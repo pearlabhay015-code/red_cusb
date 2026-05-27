@@ -353,7 +353,7 @@
 .hero-overlay {
   position: absolute;
   inset: 0;
-  /* background: linear-gradient(90deg, rgba(243, 248, 255, .88) 0%, rgba(239, 231, 255, .64) 42%, rgba(255, 228, 241, .22) 72%); */
+  background: transparent;
   z-index: -1;
 }
 
@@ -375,6 +375,8 @@
   font-size: clamp(2.6rem, 5.6vw, 5.2rem);
   margin-bottom: 22px;
   color: #09080b;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 .hero h1 span {
@@ -385,6 +387,8 @@
   max-width: 440px;
   font-size: 1.2rem;
   color: #1f1b20;
+  font-weight: 500;
+  letter-spacing: 0.015em;
 }
 
 .hero-actions {
@@ -724,7 +728,7 @@
   }
 
   .hero-overlay {
-    background: linear-gradient(180deg, rgba(255, 255, 255, .52), rgba(255, 255, 255, .12) 48%, rgba(9, 8, 11, .36));
+    background: transparent;
   }
 
   .hero-stats {
@@ -825,7 +829,7 @@
   }
 
   .hero-overlay {
-    background: linear-gradient(180deg, rgba(255, 255, 255, .52), rgba(255, 255, 255, .12) 48%, rgba(9, 8, 11, .36));
+    background: transparent;
   }
 
   .hero-copy {
